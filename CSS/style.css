@@ -252,7 +252,7 @@ body {
 
 /* Titres principaux */
 #services h1 {
-    font-size: 3em;
+    font-size: 2.5em;
     margin-top: 10px;
     margin-bottom: 20px;
     color: var(--color-highlight); /* Titre avec couleur d'accentuation */
@@ -260,7 +260,7 @@ body {
 
 /* Titres des sections (services) */
 #services h2 {
-    font-size: 1.5em;
+    font-size: 1.2em;
     margin-top: 20px;
     margin-bottom: 10px;
     color: var(--color-primary); /* Utiliser la couleur primaire */
@@ -279,7 +279,7 @@ body {
 
 /* Texte général des services */
 #services p {
-    font-size: 1.1em;
+    font-size: 1.2em;
     margin-top: 5px;
     margin-bottom: 10px;
     color: var(--color-secondary); /* Appliquer la couleur secondaire au texte */
@@ -336,7 +336,7 @@ body {
 
 .temoignage .avis {
     font-style: italic;
-    font-size: 1.1em;
+    font-size: 1.2em;
     color: var(--color-secondary); /* Couleur secondaire pour le texte */
 }
 
@@ -359,7 +359,7 @@ body {
 }
 
 .formulaire-temoignage h2 {
-    font-size: 1.8em;
+    font-size: 1.2em;
     margin-bottom: 20px;
     color: var(--color-primary);
 }
@@ -391,7 +391,7 @@ body {
     color: white;
     border: none;
     border-radius: 4px;
-    font-size: 1.1em;
+    font-size: 1.2em;
     cursor: pointer;
     transition: background-color 0.3s;
     margin-bottom: 20px;  /* Ajouter de l'espace sous le bouton */
