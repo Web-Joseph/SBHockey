@@ -7,7 +7,7 @@
     --title-photo-spacing: 50px;               /* Espacement entre le titre et la photo de Mike */
     --photo-description-spacing: 30px;         /* Espacement entre la photo et la description */
     --line-spacing: 20px;                      /* Espacement entre les lignes de texte dans la description */
-    --title-top-margin: 30px;                   /* Espacement entre le titre et le haut de la page */
+    --title-top-margin: 10px;                   /* Espacement entre le titre et le haut de la page */
     
     --photo-mike-top-left-margin: 400px;        /* Espacement spécifique pour la photo de Mike (haut + gauche) */
     --photo-emil-bottom-right-margin: 120px;    /* Réduction de 10px pour déplacer la photo d'Emil vers le haut de 10px */ 
