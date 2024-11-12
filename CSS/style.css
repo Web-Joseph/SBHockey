@@ -269,7 +269,7 @@ body {
 /* Texte général des services */
 #services p {
     font-size: 1.2em;
-    margin-top: 5px;
+    margin-top: 10px;
     margin-bottom: 0px;
     color: var(--color-secondary); /* Appliquer la couleur secondaire au texte */
 }
