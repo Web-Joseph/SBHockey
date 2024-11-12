@@ -1,276 +1,12 @@
-/* -------------------------------
-   Variables Globales - Espacements, Polices et Couleurs
-   ------------------------------- */
-:root {
-    /* Espacements */
-    --title-description-spacing: 10px;
-    --title-photo-spacing: 50px;
-    --photo-description-spacing: 30px;
-    --line-spacing: 20px;
-    --title-top-margin: 30px;
-
-    --photo-mike-top-left-margin: 400px;
-    --photo-emil-bottom-right-margin: 120px;
-    --photo-spacing-left: 113px;
-    --photo-spacing-right: 113px;
-    --photo-margin: 30px;
-    --footer-padding: 20px;
-
-    /* Couleurs */
-    --color-primary: #000000;
-    --color-secondary: #333;
-    --color-accent: #f39c12;
-    --color-footer-text: white;
-    --color-footer-background: rgba(0, 0, 0, 0.8);
-
-    /* Polices */
-    --font-family-primary: 'Arial', sans-serif;
-    --font-family-secondary: 'Roboto', sans-serif;
-
-    /* Espacement spécifique pour les témoignages */
-    --temoignages-top-margin: -20px;
-}
-
-/* -------------------------------
-   Appliquer le logo en arrière-plan à l'ensemble de la page
-   ------------------------------- */
-body {
-    background: url('../assets/images/LogoTransparent.jpg') center/cover fixed no-repeat;
-    opacity: 0.7;
-    min-height: 100vh;
-    margin: 0;
-    padding: 0;
-    font-family: var(--font-family-primary);
-}
-
-/* -------------------------------
-   Section Notre Équipe - Ajustement du titre et description
-   ------------------------------- */
-#notre-equipe {
-    margin-top: var(--title-top-margin);
-    padding-top: 0;
-    text-align: center;
-    background: url('../assets/images/LogoTransparent.jpg') center/cover fixed no-repeat;
-}
-
-#notre-equipe h2 {
-    margin-top: var(--title-top-margin);
-    margin-bottom: var(--title-description-spacing);
-    font-size: 2.5em;
-}
-
-#notre-equipe p {
-    margin-top: var(--title-description-spacing);
-    font-size: 1.2em;
-    text-align: center;
-}
-
-/* -------------------------------
-   Positionnement des coachs avec leurs photos et descriptions
-   ------------------------------- */
-.coach {
-    display: flex;
-    align-items: flex-start;
-    margin-bottom: 40px;
-    gap: var(--photo-description-spacing);
-    padding: 0 var(--photo-spacing-left);
-    justify-content: flex-start;
-}
-
-.coach-info {
-    max-width: 700px;
-    text-align: left;
-    margin-top: 90px;
-    margin-bottom: 20px;
-    line-height: var(--line-spacing);
-}
-
-.coach-info h3, .coach-info p {
-    text-align: left !important;
-}
-
-.coach img {
-    width: 400px;
-    height: auto;
-    border-radius: 8px;
-    margin-right: var(--photo-margin);
-}
-
-/* -------------------------------
-   Positionner les coachs spécifiques
-   ------------------------------- */
-#notre-equipe .coach:first-child {
-    flex-direction: row;
-    margin-top: var(--photo-mike-top-left-margin);
-}
-
-#notre-equipe .coach:first-child img {
-    top: var(--photo-mike-top-left-margin);
-    left: var(--photo-spacing-left);
-}
-
-#notre-equipe .coach:last-child {
-    flex-direction: row-reverse;
-    margin-top: var(--photo-emil-bottom-right-margin);
-}
-
-#notre-equipe .coach:last-child img {
-    top: var(--photo-emil-bottom-right-margin);
-    right: var(--photo-spacing-right);
-}
-
-#notre-equipe .coach:last-child .coach-info {
-    margin-top: 130px;
-}
-
-/* -------------------------------
-   Section Témoignages
-   ------------------------------- */
-#temoignages {
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-start;
-    align-items: center;
-    padding: 40px 20px;
-    margin-top: var(--temoignages-top-margin);
-    min-height: 100vh;
-    text-align: center;
-}
-
-#temoignages h1 {
-    font-size: 2.5em;
-    margin-top: 10px;
-    margin-bottom: 30px;
-    color: var(--color-primary);
-}
-
-.temoignage {
-    width: 100%;
-    max-width: 800px;
-    margin: 20px 0;
-    padding: 20px;
-    text-align: left;
-    border: 1px solid #ddd;
-    border-radius: 8px;
-    background-color: rgba(255, 255, 255, 0.8);
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-}
-
-.temoignage .avis {
-    font-style: italic;
-    font-size: 1.1em;
-    color: var(--color-secondary);
-}
-
-.temoignage .nom {
-    font-weight: bold;
-    margin-top: 15px;
-    color: var(--color-primary);
-}
-
-/* -------------------------------
-   Formulaire de Témoignage
-   ------------------------------- */
-.formulaire-temoignage {
-    background-color: #f9f9f9;
-    padding: 20px;
-    margin: 20px 0;
-    border-radius: 8px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    text-align: center;
-}
-
-.formulaire-temoignage h2 {
-    font-size: 1.8em;
-    margin-bottom: 20px;
-    color: var(--color-primary);
-}
-
-.formulaire-temoignage label {
-    display: block;
-    margin-bottom: 8px;
-    font-weight: bold;
-    color: var(--color-primary);
-}
-
-.formulaire-temoignage input[type="text"],
-.formulaire-temoignage textarea {
-    width: 100%;
-    padding: 10px;
-    margin-bottom: 15px;
-    border: 1px solid #ddd;
-    border-radius: 4px;
-    font-size: 1em;
-}
-
-.formulaire-temoignage button {
-    padding: 10px 20px;
-    background-color: var(--color-accent);
-    color: white;
-    border: none;
-    border-radius: 4px;
-    font-size: 1.1em;
-    cursor: pointer;
-    transition: background-color 0.3s;
-}
-
-.formulaire-temoignage button:hover {
-    background-color: #e67e22;
-}
-
-/* -------------------------------
-   Section Inscription
-   ------------------------------- */
-#inscription {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    padding: 40px 20px;
-    min-height: 100vh;
-    background: url('../assets/images/LogoTransparent.jpg') center/cover fixed no-repeat;
-    opacity: 0.8;
-    color: var(--color-primary);
-    text-align: center;
-}
-
-#inscription h1 {
-    font-size: 2.5em;
-    margin-top: -200px;
-    margin-bottom: var(--title-description-spacing);
-    color: var(--color-primary);
-    font-family: var(--font-family-secondary);
-}
-
-.form-container {
-    background-color: rgba(255, 255, 255, 0.8);
-    padding: 30px;
-    border-radius: 8px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    width: 100%;
-    max-width: 600px;
-    margin-top: 20px;
-}
-
-form label {
-    font-weight: bold;
-    margin-top: 10px;
-    display: block;
-    color: var(--color-primary);
-}
-
-form input, form button, form textarea {
-    width: 100%;
-    padding: 10px;
-    margin-top: 8px;
-    border: 1px solid #ddd;
+    border: 1px solid #ddd; /* Bordure claire */
     border-radius: 5px;
     font-size: 1em;
-    font-family: var(--font-family-primary);
+    font-family: var(--font-family-primary); /* Utiliser la police par défaut */
 }
 
+/* Bouton de soumission */
 form button {
-    background-color: var(--color-accent);
+    background-color: var(--color-accent); /* Couleur d'accentuation pour le bouton */
     color: white;
     border: none;
     cursor: pointer;
@@ -279,9 +15,25 @@ form button {
     transition: background-color 0.3s;
 }
 
+/* Effet au survol du bouton */
 form button:hover {
-    background-color: #e67e22;
+    background-color: #e67e22; /* Change de couleur lors du survol */
 }
+
+/* -------------------------------
+   Formulaire Responsive Design
+   ------------------------------- */
+@media (max-width: 768px) {
+    #inscription {
+        padding: 20px; /* Moins de padding sur mobile */
+    }
+
+    .form-container {
+        padding: 20px;
+    }
+}
+
+
 
 /* -------------------------------
    Footer
@@ -289,17 +41,22 @@ form button:hover {
 footer {
     text-align: center;
     padding: var(--footer-padding);
-    background-color: var(--color-footer-background);
-    color: var(--color-footer-text);
+    background-color: var(--color-footer-background); /* Couleur de fond */
+    color: var(--color-footer-text); /* Couleur du texte */
     position: fixed;
     bottom: 0;
     width: 100%;
-    font-family: var(--font-family-primary);
+    font-family: var(--font-family-primary); /* Appliquer la même police primaire que sur la page d'accueil */
 }
 
-/* -------------------------------
-   Menu Déroulant
-   ------------------------------- */
+/* Appliquer la même police aux éléments texte du footer (p et a) */
+footer p, footer a {
+    font-family: var(--font-family-primary);  /* Appliquer la police à tous les éléments texte du footer */
+}
+
+/* ---------------------- MENU DÉROULANT ------------------------ */
+
+/* Style du menu déroulant */
 nav {
     background-color: rgba(255, 255, 255, 0.8);
     padding: 20px;
@@ -310,19 +67,98 @@ nav ul {
     list-style-type: none;
     margin: 0;
     padding: 0;
+    display: flex; /* Disposition en ligne pour les éléments du menu */
+    justify-content: center; /* Centrer les éléments du menu horizontalement */
 }
 
 nav ul li {
-    display: inline;
+    position: relative; /* Pour positionner les sous-menus */
     margin: 0 15px;
 }
 
-nav a {
+nav ul li a {
     text-decoration: none;
-    font-size: 1.2em;
-    color: var(--color-primary);
+    color: #333;
+    font-size: 18px;
+    padding: 10px;
+    display: block;
+    background-color: transparent;
+    border-radius: 4px;
+    transition: background-color 0.3s ease;
 }
 
-nav a:hover {
-    color: var(--color-accent);
+/* Changement de couleur lors du survol */
+nav ul li a:hover {
+    background-color: #ddd;
+}
+
+/* Style du menu déroulant */
+nav ul li ul {
+    display: none; /* Masquer les sous-menus */
+    position: absolute;
+    top: 100%;
+    left: 0;
+    background-color: rgba(255, 255, 255, 0.9);
+    padding: 10px;
+    border-radius: 4px;
+    min-width: 180px;
+}
+
+nav ul li:hover > ul {
+    display: block; /* Afficher le sous-menu lors du survol du parent */
+}
+
+nav ul li ul li a {
+    padding: 10px;
+    background-color: transparent;
+}
+
+nav ul li ul li a:hover {
+    background-color: #ddd;
+}
+
+/* Icône du menu hamburger (pour mobile) */
+.menu-toggle {
+    display: none;
+    cursor: pointer;
+}
+
+.menu-toggle .bar {
+    display: block;
+    width: 30px;
+    height: 4px;
+    margin: 6px auto;
+    background-color: #333;
+}
+
+/* Responsivité pour mobile (moins de 768px) */
+@media (max-width: 768px) {
+    /* Masquer les éléments du menu par défaut */
+    nav ul {
+        display: none;
+        flex-direction: column;
+        text-align: left;
+    }
+
+    /* Afficher l'icône hamburger sur mobile */
+    .menu-toggle {
+        display: block;
+    }
+
+    /* Lorsque le menu est actif, on l'affiche */
+    nav.active ul {
+        display: flex;
+    }
+
+    /* Modifier la présentation des éléments du menu */
+    nav ul li {
+        width: 100%;
+        margin: 0;
+    }
+
+    /* Submenu style pour mobile */
+    nav ul li ul {
+        position: static; /* Modifier la position du sous-menu pour mobile */
+        min-width: 100%;
+    }
 }
