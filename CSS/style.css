@@ -261,27 +261,17 @@ body {
 /* Titres des sections (services) */
 #services h2 {
     font-size: 1.2em;
-    margin-top: 20px;
-    margin-bottom: 10px;
+    margin-top: 40px;
+    margin-bottom: 5px;
     color: var(--color-primary); /* Utiliser la couleur primaire */
 }
 
-/* Listes des services */
-#services ul {
-    list-style-type: none;
-    padding-left: 0;
-    font-size: 0.8em;
-    text-align: left;
-    margin: 0 auto 0px auto;
-    width: 90%;
-    color: var(--color-secondary); /* Appliquer la couleur secondaire aux listes */
-}
 
 /* Texte général des services */
 #services p {
     font-size: 1.2em;
     margin-top: 5px;
-    margin-bottom: 10px;
+    margin-bottom: 0px;
     color: var(--color-secondary); /* Appliquer la couleur secondaire au texte */
 }
 
@@ -298,7 +288,6 @@ body {
         font-size: 1em; /* Ajuster la taille du texte des descriptions */
     }
 }
-
 
 /* -------------------------------
    Section Témoignages
