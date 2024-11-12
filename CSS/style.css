@@ -305,7 +305,7 @@ body {
 #temoignages h1 {
     font-size: 2.5em;
     margin-top: 10px;
-    margin-bottom: 30px;
+    margin-bottom: 0px;
     color: var(--color-primary); /* Couleur primaire pour le titre */
 }
 
