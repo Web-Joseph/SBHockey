@@ -254,7 +254,7 @@ body {
 #services h1 {
     font-size: 2.5em;
     margin-top: 10px;
-    margin-bottom: 20px;
+    margin-bottom: 10px;
     color: var(--color-highlight); /* Titre avec couleur d'accentuation */
 }
 
