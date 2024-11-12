@@ -24,16 +24,16 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     try {
         // Configuration du serveur SMTP (à ajuster selon ton fournisseur de services)
         $mail->isSMTP();
-        $mail->Host = 'smtp.example.com'; // Hôte du serveur SMTP (ex. Gmail, SendGrid, etc.)
+        $mail->Host = 'smtp.mail.yahoo.com'; // Hôte du serveur SMTP (ex. Gmail, SendGrid, etc.)
         $mail->SMTPAuth = true;
-        $mail->Username = 'ton_email@example.com'; // Ton adresse email
-        $mail->Password = 'ton_mot_de_passe'; // Ton mot de passe
+        $mail->Username = 'riouxj@ymail.com'; // Ton adresse email
+        $mail->Password = 'Rio982des$'; // Ton mot de passe
         $mail->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS;
         $mail->Port = 587;
 
         // Expéditeur et destinataire
-        $mail->setFrom('ton_email@example.com', 'École de Hockey Stinziani Bruneau');
-        $mail->addAddress('destinataire@example.com'); // Remplace par l'adresse email de destination
+        $mail->setFrom('riouxj@ymail.com', 'École de Hockey Stinziani Bruneau');
+        $mail->addAddress('riouxj@ymail.com'); // Remplace par l'adresse email de destination
 
         // Sujet
         $mail->Subject = 'Nouvelle Inscription - École de Hockey Stinziani Bruneau';
