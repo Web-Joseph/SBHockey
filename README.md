@@ -12,4 +12,4 @@ mon-site-hockey/
 │   └── scripts.js
 └── assets/
     └── images/
-        └── ton-image.jpg
+        └── LogoTransparent.jpg
