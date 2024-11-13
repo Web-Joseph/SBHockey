@@ -93,3 +93,19 @@ document.addEventListener('DOMContentLoaded', function () {
         });
     });
 });
+
+// Ajouter votre fonction handleSubmit ici
+document.addEventListener('DOMContentLoaded', function () {
+    function handleSubmit() {
+        // Soumettre le formulaire
+        document.getElementById('form-inscription').submit();
+        
+        // Rafraîchir la page ou rediriger après la soumission
+        setTimeout(function() {
+            // Rediriger vers la page d'accueil après 2 secondes
+            window.location.href = "index.html";  // Vous pouvez également choisir de rediriger ailleurs
+        }, 2000); // Attendre 2 secondes avant la redirection ou le rafraîchissement
+        
+        return false; // Empêcher l'envoi immédiat pour activer la logique de redirection
+    }
+});
