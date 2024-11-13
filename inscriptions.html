@@ -15,8 +15,8 @@
                 <li><a href="index.html">Accueil</a></li>
                 <li><a href="notre-equipe.html">Notre Équipe</a></li>
                 <li><a href="services.html">Nos Services</a></li>
-                <li><a href="inscriptions.html">Inscription</a></li> <!-- Lien vers la page inscription -->
-                <li><a href="temoignages.html">Témoignages</a></li> <!-- Lien vers la page témoignages -->
+                <li><a href="inscriptions.html">Inscription</a></li>
+                <li><a href="temoignages.html">Témoignages</a></li>
                 <li><a href="contact.html">Contact</a></li>
             </ul>
         </nav>
@@ -67,6 +67,12 @@
                     <option value="equipe-aaa-printemps">Équipe AAA Printemps</option>
                 </select>
                 
+                <!-- Bouton PayPal -->
+                <div class="paypal-container">
+                    <label>Payez avec PayPal :</label>
+                    <div id="paypal-button-container"></div> <!-- Le bouton PayPal sera inséré ici -->
+                </div>
+
                 <!-- Bouton de soumission -->
                 <button type="submit">Soumettre mon inscription</button>
             </form>
@@ -79,6 +85,25 @@
     </footer>
 
     <script src="js/scripts.js"></script> <!-- Lien vers ton script JS -->
+
+    <!-- Lien de retour vers la page principale -->
+    <a href="index.html" onclick="resetForm()">Revenir au site principal</a>
+
+    <!-- Charge le SDK PayPal -->
+    <script src="https://www.paypal.com/sdk/js?client-id=YOUR_CLIENT_ID"></script>
+
+    <script>
+        // Fonction de réinitialisation du formulaire
+        function resetForm() {
+            // Empêche la réinitialisation avant soumission du formulaire
+            if (document.getElementById('form-inscription').checkValidity()) {
+                document.getElementById('form-inscription').reset();
+            }
+        }
+
+        // Code PayPal pour afficher le bouton
+        paypal.Buttons().render('#paypal-button-container');
+    </script>
 
 </body>
 </html>
