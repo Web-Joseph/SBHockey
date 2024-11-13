@@ -67,8 +67,14 @@
                     <option value="equipe-aaa-printemps">Équipe AAA Printemps</option>
                 </select>
                 
-                <!-- Bouton pour ouvrir le popup -->
-                <button type="button" class="popup-button" onclick="openPopup()">Soumettre mon inscription</button>
+                <!-- Bouton PayPal -->
+                <div class="paypal-container">
+                    <label>Payez avec PayPal :</label>
+                    <div id="paypal-button-container"></div> <!-- Le bouton PayPal sera inséré ici -->
+                </div>
+
+                <!-- Bouton de soumission -->
+                <button type="submit">Soumettre mon inscription</button>
             </form>
         </div>
     </section>
@@ -83,11 +89,20 @@
     <!-- Lien de retour vers la page principale -->
     <a href="index.html" onclick="resetForm()">Revenir au site principal</a>
 
+    <!-- Charge le SDK PayPal -->
+    <script src="https://www.paypal.com/sdk/js?client-id=YOUR_CLIENT_ID"></script>
+
     <script>
-        // Fonction pour réinitialiser le formulaire lorsque l'utilisateur revient au site principal
+        // Fonction de réinitialisation du formulaire
         function resetForm() {
-            document.getElementById('form-inscription').reset();  // Réinitialiser tous les champs du formulaire
+            // Empêche la réinitialisation avant soumission du formulaire
+            if (document.getElementById('form-inscription').checkValidity()) {
+                document.getElementById('form-inscription').reset();
+            }
         }
+
+        // Code PayPal pour afficher le bouton
+        paypal.Buttons().render('#paypal-button-container');
     </script>
 
 </body>
