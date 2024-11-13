@@ -66,22 +66,18 @@
                     <option value="developpement">Programme de développement</option>
                     <option value="equipe-aaa-printemps">Équipe AAA Printemps</option>
                 </select>
+                
+                <!-- Bouton PayPal -->
+                <div class="paypal-container">
+                    <label>Payez avec PayPal :</label>
+                    <div id="paypal-button-container"></div> <!-- Le bouton PayPal sera inséré ici -->
+                </div>
 
                 <!-- Bouton de soumission -->
-                <button type="button" id="submit-button">Soumettre mon inscription</button>
+                <button type="submit">Soumettre mon inscription</button>
             </form>
         </div>
     </section>
-
-    <!-- Popup Modal -->
-    <div id="payment-popup" class="modal">
-        <div class="modal-content">
-            <span class="close-button">&times;</span>
-            <h2>Choisissez votre option</h2>
-            <!-- Option de soumission sans payer -->
-            <button id="submit-without-payment">Soumettre sans payer</button>
-        </div>
-    </div>
 
     <!-- Footer -->
     <footer>
@@ -93,22 +89,10 @@
     <!-- Lien de retour vers la page principale -->
     <a href="index.html" onclick="resetForm()">Revenir au site principal</a>
 
+    <!-- Charge le SDK PayPal -->
+    <script src="https://www.paypal.com/sdk/js?client-id=YOUR_CLIENT_ID"></script>
+
     <script>
-        // Ouvrir le pop-up lorsque le bouton "Soumettre mon inscription" est cliqué
-        document.getElementById('submit-button').onclick = function() {
-            document.getElementById('payment-popup').style.display = 'block';
-        };
-
-        // Fermer le pop-up lorsque la croix est cliquée
-        document.querySelector('.close-button').onclick = function() {
-            document.getElementById('payment-popup').style.display = 'none';
-        };
-
-        // Soumettre sans payer
-        document.getElementById('submit-without-payment').onclick = function() {
-            document.getElementById('form-inscription').submit();
-        };
-
         // Fonction de réinitialisation du formulaire
         function resetForm() {
             // Empêche la réinitialisation avant soumission du formulaire
@@ -116,59 +100,10 @@
                 document.getElementById('form-inscription').reset();
             }
         }
+
+        // Code PayPal pour afficher le bouton
+        paypal.Buttons().render('#paypal-button-container');
     </script>
-
-    <style>
-        /* Style du pop-up */
-        .modal {
-            display: none; 
-            position: fixed; 
-            z-index: 1; 
-            left: 0;
-            top: 0;
-            width: 100%; 
-            height: 100%; 
-            background-color: rgba(0, 0, 0, 0.4); 
-        }
-
-        .modal-content {
-            background-color: white;
-            margin: 15% auto;
-            padding: 20px;
-            border-radius: 10px;
-            width: 80%;
-            max-width: 500px;
-        }
-
-        .close-button {
-            color: #aaa;
-            font-size: 28px;
-            font-weight: bold;
-            position: absolute;
-            top: 5px;
-            right: 15px;
-        }
-
-        .close-button:hover,
-        .close-button:focus {
-            color: black;
-            text-decoration: none;
-            cursor: pointer;
-        }
-
-        button {
-            padding: 10px 20px;
-            margin-top: 10px;
-            font-size: 16px;
-            cursor: pointer;
-            width: 100%;
-        }
-
-        #submit-without-payment {
-            background-color: #f1f1f1;
-            color: #333;
-        }
-    </style>
 
 </body>
 </html>
