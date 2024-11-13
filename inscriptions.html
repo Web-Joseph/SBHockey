@@ -67,6 +67,43 @@
                     <option value="equipe-aaa-printemps">Équipe AAA Printemps</option>
                 </select>
 
+                <!-- Options pour le camp de hockey -->
+                <div id="camp-options" style="display: none;">
+                    <label for="nombre-semaines">Nombre de semaines :</label>
+                    <select id="nombre-semaines" name="nombre-semaines" class="form-input">
+                        <option value="" disabled selected>Choisissez le nombre de semaines</option>
+                        <option value="1">1 semaine</option>
+                        <option value="2">2 semaines</option>
+                        <option value="3">3 semaines</option>
+                    </select>
+
+                    <div id="semaines-selection" style="display: none;">
+                        <label for="semaines">Semaine du :</label>
+                        <div class="checkbox-group">
+                            <div>
+                                <label for="7-juillet">7 juillet</label>
+                                <input type="checkbox" id="7-juillet" name="semaines[]" value="7-juillet">
+                            </div>
+                            <div>
+                                <label for="4-aout">4 août</label>
+                                <input type="checkbox" id="4-aout" name="semaines[]" value="4-aout">
+                            </div>
+                            <div>
+                                <label for="21-aout">21 août</label>
+                                <input type="checkbox" id="21-aout" name="semaines[]" value="21-aout">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Bouton de soumission -->
+                <button type="button" id="submit-button">Soumettre mon inscription</button>
+                <input type="hidden" id="payment-status" name="payment-status" value="non-payé">
+                <input type="hidden" id="amount" name="amount" value="">
+            </form>
+        </div>
+    </section>
+
                 <!-- Bouton de soumission -->
                 <button type="button" id="submit-button">Soumettre mon inscription</button>
             </form>
