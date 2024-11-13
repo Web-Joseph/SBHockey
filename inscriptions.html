@@ -139,7 +139,7 @@
         <p>© 2024 Stinziani Bruneau Hockey.</p>
     </footer>
 
-    <script>
+        <script>
         // Ouvrir le pop-up lorsque le bouton "Soumettre mon inscription" est cliqué
         document.getElementById('submit-button').onclick = function() {
             if (document.getElementById('form-inscription').checkValidity()) {
@@ -178,6 +178,54 @@
                 document.getElementById('form-inscription').reset();
             }
         }
+
+        // Afficher les options de semaines en fonction du nombre de semaines choisi
+        document.getElementById('nombre-semaines').addEventListener('change', function() {
+            var nombreSemaines = this.value;
+            var semainesSelection = document.getElementById('semaines-selection');
+            var checkboxes = semainesSelection.querySelectorAll('input[type="checkbox"]');
+            semainesSelection.style.display = 'block';
+
+            checkboxes.forEach(function(checkbox) {
+                checkbox.checked = false;
+                checkbox.disabled = false;
+            });
+
+            if (nombreSemaines === '3') {
+                checkboxes.forEach(function(checkbox) {
+                    checkbox.checked = true;
+                    checkbox.disabled = true;
+                });
+            } else {
+                checkboxes.forEach(function(checkbox) {
+                    checkbox.addEventListener('change', function() {
+                        var checkedCount = document.querySelectorAll('#semaines-selection input[type="checkbox"]:checked').length;
+                        if (checkedCount >= nombreSemaines) {
+                            checkboxes.forEach(function(box) {
+                                if (!box.checked) {
+                                    box.disabled = true;
+                                }
+                            });
+                        } else {
+                            checkboxes.forEach(function(box) {
+                                box.disabled = false;
+                            });
+                        }
+                    });
+                });
+            }
+        });
+
+        // Afficher les options de camp de hockey en fonction du service choisi
+        document.getElementById('service').addEventListener('change', function() {
+            var service = this.value;
+            var campOptions = document.getElementById('camp-options');
+            if (service === 'camp') {
+                campOptions.style.display = 'block';
+            } else {
+                campOptions.style.display = 'none';
+            }
+        });
     </script>
 
     <style>
@@ -218,7 +266,7 @@
             cursor: pointer;
         }
 
-                button {
+        button {
             padding: 10px 20px;
             margin-top: 10px;
             font-size: 16px;
