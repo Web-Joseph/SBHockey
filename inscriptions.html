@@ -78,7 +78,7 @@
         <div class="modal-content">
             <span class="close-button">&times;</span>
             <h2>Choisissez votre option</h2>
-            <button id="pay-with-paypal">Payer avec PayPal</button>
+            <!-- Option de soumission sans payer -->
             <button id="submit-without-payment">Soumettre sans payer</button>
         </div>
     </div>
@@ -92,9 +92,6 @@
 
     <!-- Lien de retour vers la page principale -->
     <a href="index.html" onclick="resetForm()">Revenir au site principal</a>
-
-    <!-- Charge le SDK PayPal -->
-    <script src="https://www.paypal.com/sdk/js?client-id=YOUR_CLIENT_ID"></script>
 
     <script>
         // Ouvrir le pop-up lorsque le bouton "Soumettre mon inscription" est cliqué
@@ -110,28 +107,6 @@
         // Soumettre sans payer
         document.getElementById('submit-without-payment').onclick = function() {
             document.getElementById('form-inscription').submit();
-        };
-
-        // Afficher le bouton PayPal dans le pop-up
-        document.getElementById('pay-with-paypal').onclick = function() {
-            paypal.Buttons({
-                createOrder: function(data, actions) {
-                    return actions.order.create({
-                        purchase_units: [{
-                            amount: {
-                                value: 'YOUR_AMOUNT' // Remplacer par le montant que vous souhaitez facturer
-                            }
-                        }]
-                    });
-                },
-                onApprove: function(data, actions) {
-                    return actions.order.capture().then(function(details) {
-                        alert('Paiement réussi !');
-                        // Soumettre le formulaire après paiement
-                        document.getElementById('form-inscription').submit();
-                    });
-                }
-            }).render('#payment-popup'); // Afficher le bouton PayPal dans la modale
         };
 
         // Fonction de réinitialisation du formulaire
@@ -187,11 +162,6 @@
             font-size: 16px;
             cursor: pointer;
             width: 100%;
-        }
-
-        #pay-with-paypal {
-            background-color: #0070ba;
-            color: white;
         }
 
         #submit-without-payment {
