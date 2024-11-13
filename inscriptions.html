@@ -26,40 +26,39 @@
     <section id="inscription" class="section">
         <h1>Inscription en ligne</h1>
         
-         <div class="form-container">
+        <div class="form-container">
             <!-- Formulaire HTML pour l'inscription -->
             <form id="form-inscription" action="https://formspree.io/f/xpwzryyv" method="POST">
                 
                 <label for="prenom">Prénom du joueur :</label>
-                <input type="text" id="prenom" name="prenom" required placeholder="Prénom du joueur">
+                <input type="text" id="prenom" name="prenom" class="form-input" required placeholder="Prénom du joueur">
                 
                 <label for="nom">Nom du joueur :</label>
-                <input type="text" id="nom" name="nom" required placeholder="Nom du joueur">
+                <input type="text" id="nom" name="nom" class="form-input" required placeholder="Nom du joueur">
                 
                 <label for="annee-naissance">Année de naissance :</label>
-                <input type="number" id="annee-naissance" name="annee-naissance" required placeholder="Année de naissance">
+                <input type="number" id="annee-naissance" name="annee-naissance" class="form-input" required placeholder="Année de naissance">
                 
                 <label for="niveau">Niveau joué 2024-2025 :</label>
-                <input type="text" id="niveau" name="niveau" required placeholder="Niveau joué">
+                <input type="text" id="niveau" name="niveau" class="form-input" required placeholder="Niveau joué">
                 
                 <label for="parent">Nom du parent responsable :</label>
-                <input type="text" id="parent" name="parent" required placeholder="Nom du parent responsable">
+                <input type="text" id="parent" name="parent" class="form-input" required placeholder="Nom du parent responsable">
                 
                 <label for="telephone">Numéro de téléphone d'urgence :</label>
-                <input type="tel" id="telephone" name="telephone" required placeholder="Numéro de téléphone d'urgence">
+                <input type="tel" id="telephone" name="telephone" class="form-input" required placeholder="Numéro de téléphone d'urgence">
                 
                 <label for="email">Adresse courriel :</label>
-                <input type="email" id="email" name="email" required placeholder="Adresse courriel">
+                <input type="email" id="email" name="email" class="form-input" required placeholder="Adresse courriel">
                 
                 <label for="chandail">Grandeur de chandail de hockey :</label>
-                <input type="text" id="chandail" name="chandail" required placeholder="Grandeur de chandail">
+                <input type="text" id="chandail" name="chandail" class="form-input" required placeholder="Grandeur de chandail">
                 
                 <label for="tshirt">Grandeur de t-shirt :</label>
-                <input type="text" id="tshirt" name="tshirt" required placeholder="Grandeur de t-shirt">
+                <input type="text" id="tshirt" name="tshirt" class="form-input" required placeholder="Grandeur de t-shirt">
                 
-                <!-- Nouveau champ déroulant pour le service demandé -->
                 <label for="service">Service demandé :</label>
-                <select id="service" name="service" required>
+                <select id="service" name="service" class="form-input" required>
                     <option value="" disabled selected>Choisissez un service</option>
                     <option value="camp-7-juillet">Semaine de camp 7 juillet</option>
                     <option value="camp-4-aout">Semaine de camp 4 août</option>
