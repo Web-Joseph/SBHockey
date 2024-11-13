@@ -26,79 +26,46 @@
     <section id="inscription" class="section">
         <h1>Inscription en ligne</h1>
         
-         <!-- Options pour le camp de hockey -->
-                <div id="camp-options" style="display: none;">
-                    <label for="nombre-semaines">Nombre de semaines :</label>
-                    <select id="nombre-semaines" name="nombre-semaines" class="form-input">
-                        <option value="" disabled selected>Choisissez le nombre de semaines</option>
-                        <option value="1">1 semaine</option>
-                        <option value="2">2 semaines</option>
-                        <option value="3">3 semaines</option>
-                    </select>
-
-                    <div id="semaines-selection" style="display: none;">
-                        <label for="semaines">Semaine du :</label>
-                        <div class="checkbox-group">
-                            <div>
-                                <label for="7-juillet">7 juillet</label>
-                                <input type="checkbox" id="7-juillet" name="semaines[]" value="7-juillet">
-                            </div>
-                            <div>
-                                <label for="4-aout">4 août</label>
-                                <input type="checkbox" id="4-aout" name="semaines[]" value="4-aout">
-                            </div>
-                            <div>
-                                <label for="21-aout">21 août</label>
-                                <input type="checkbox" id="21-aout" name="semaines[]" value="21-aout">
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Bouton de soumission -->
-                <button type="button" id="submit-button">Soumettre mon inscription</button>
-                <input type="hidden" id="payment-status" name="payment-status" value="non-payé">
-                <input type="hidden" id="amount" name="amount" value="">
-            </form>
-        </div>
-    </section>
-    
-                <!-- Options pour le camp de hockey -->
-                <div id="camp-options" style="display: none;">
-                    <label for="nombre-semaines">Nombre de semaines :</label>
-                    <select id="nombre-semaines" name="nombre-semaines" class="form-input">
-                        <option value="" disabled selected>Choisissez le nombre de semaines</option>
-                        <option value="1">1 semaine</option>
-                        <option value="2">2 semaines</option>
-                        <option value="3">3 semaines</option>
-                    </select>
-
-                    <div id="semaines-selection" style="display: none;">
-                        <label for="semaines">Semaine du :</label>
-                        <div class="checkbox-group">
-                            <div>
-                                <label for="7-juillet">7 juillet</label>
-                                <input type="checkbox" id="7-juillet" name="semaines[]" value="7-juillet">
-                            </div>
-                            <div>
-                                <label for="4-aout">4 août</label>
-                                <input type="checkbox" id="4-aout" name="semaines[]" value="4-aout">
-                            </div>
-                            <div>
-                                <label for="21-aout">21 août</label>
-                                <input type="checkbox" id="21-aout" name="semaines[]" value="21-aout">
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Bouton de soumission -->
-                <button type="button" id="submit-button">Soumettre mon inscription</button>
-                <input type="hidden" id="payment-status" name="payment-status" value="non-payé">
-                <input type="hidden" id="amount" name="amount" value="">
-            </form>
-        </div>
-    </section>
+        <div class="form-container">
+            <!-- Formulaire HTML pour l'inscription -->
+            <form id="form-inscription" action="https://formspree.io/f/xpwzryyv" method="POST">
+                
+                <label for="prenom">Prénom du joueur :</label>
+                <input type="text" id="prenom" name="prenom" class="form-input" required placeholder="Prénom du joueur">
+                
+                <label for="nom">Nom du joueur :</label>
+                <input type="text" id="nom" name="nom" class="form-input" required placeholder="Nom du joueur">
+                
+                <label for="annee-naissance">Année de naissance :</label>
+                <input type="number" id="annee-naissance" name="annee-naissance" class="form-input" required placeholder="Année de naissance">
+                
+                <label for="niveau">Niveau joué 2024-2025 :</label>
+                <input type="text" id="niveau" name="niveau" class="form-input" required placeholder="Niveau joué">
+                
+                <label for="parent">Nom du parent responsable :</label>
+                <input type="text" id="parent" name="parent" class="form-input" required placeholder="Nom du parent responsable">
+                
+                <label for="telephone">Numéro de téléphone d'urgence :</label>
+                <input type="tel" id="telephone" name="telephone" class="form-input" required placeholder="Numéro de téléphone d'urgence">
+                
+                <label for="email">Adresse courriel :</label>
+                <input type="email" id="email" name="email" class="form-input" required placeholder="Adresse courriel">
+                
+                <label for="chandail">Grandeur de chandail de hockey :</label>
+                <input type="text" id="chandail" name="chandail" class="form-input" required placeholder="Grandeur de chandail">
+                
+                <label for="tshirt">Grandeur de t-shirt :</label>
+                <input type="text" id="tshirt" name="tshirt" class="form-input" required placeholder="Grandeur de t-shirt">
+                
+                <label for="service">Service demandé :</label>
+                <select id="service" name="service" class="form-input" required>
+                    <option value="" disabled selected>Choisissez un service</option>
+                    <option value="camp-7-juillet">Semaine de camp 7 juillet</option>
+                    <option value="camp-4-aout">Semaine de camp 4 août</option>
+                    <option value="camp-21-aout">Semaine de camp 21 août</option>
+                    <option value="developpement">Programme de développement</option>
+                    <option value="equipe-aaa-printemps">Équipe AAA Printemps</option>
+                </select>
 
                 <!-- Bouton de soumission -->
                 <button type="button" id="submit-button">Soumettre mon inscription</button>
@@ -200,18 +167,6 @@
         #submit-without-payment {
             background-color: #f1f1f1;
             color: #333;
-        }
-    /* Styles pour aligner les cases à cocher sur une ligne */
-        .checkbox-group {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-        }
-        .checkbox-group div {
-            margin-right: 20px;
-        }
-        .checkbox-group label {
-            margin-right: 5px;
         }
     </style>
 
