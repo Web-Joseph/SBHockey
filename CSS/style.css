@@ -488,7 +488,7 @@ select.form-input {
 /* Titre de la section */
 #inscription h1 {
     font-size: 2.5em;
-    margin-top: -100px; /* Ajuste l'espacement du titre à 10px du header */
+    margin-top: -325px; /* Ajuste l'espacement du titre à 10px du header */
     margin-bottom: var(--title-description-spacing); /* Espacement entre le titre et le formulaire */
     color: var(--color-primary); /* Couleur or définie dans les variables */
     font-family: var(--font-family-secondary); /* Police secondaire pour le titre */
@@ -504,13 +504,13 @@ select.form-input {
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Ombre légère */
     width: 100%;
     max-width: 600px; /* Limiter la largeur à 600px */
-    margin-top: 100px;  /* Espacement entre le titre et la boîte d'inscription */
+    margin-top: 10px;  /* Espacement entre le titre et la boîte d'inscription */
 }
 
 /* Labels des champs du formulaire */
 form label {
     font-weight: bold;
-    margin-top: 10px;
+    margin-top: 5px;
     display: block;
     color: var(--color-primary); /* Couleur primaire pour les labels */
     font-family: var(--font-family-primary); /* Police par défaut pour les labels */
@@ -531,7 +531,7 @@ form textarea {
 
 /* Bouton de soumission */
 form button {
-    background-color: var(--color-accent); /* Couleur d'accentuation pour le bouton */
+    background-color: var(--color-primary); /* Couleur d'accentuation pour le bouton */
     color: white;
     border: none;
     cursor: pointer;
