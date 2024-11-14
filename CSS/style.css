@@ -505,7 +505,7 @@ select.form-input {
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Ombre légère */
     width: 100%;
     max-width: 600px; /* Limiter la largeur à 600px */
-    margin-top: 5px;  /* Espacement entre le titre et la boîte d'inscription */
+    margin-top: 50px;  /* Espacement entre le titre et la boîte d'inscription */
 }
 
 /* Labels des champs du formulaire */
@@ -523,7 +523,7 @@ form button,
 form textarea {
     width: 100%;
     padding: 10px;
-    margin-top: 4px;
+    margin-top: 15px;
     border: 1px solid #ddd; /* Bordure claire */
     border-radius: 5px;
     font-size: 1em;
@@ -599,7 +599,7 @@ form button:hover {
 
 #contact h1 {
     font-size: 2.5em;
-    margin-top: -530px; /* Ajuster la marge supérieure à 5px */
+    margin-top: -520px; /* Ajuster la marge supérieure à 5px */
     margin-bottom: 80px; /* Ajuster la marge inférieure pour un espacement cohérent */
     color: var(--color-highlight); /* Utiliser la couleur d'accentuation pour le titre */
 }
