@@ -1,3 +1,4 @@
+
 /* -------------------------------
    Variables Globales - Espacements, Polices et Couleurs
    ------------------------------- */
@@ -499,18 +500,18 @@ select.form-input {
    ------------------------------- */
 .form-container {
     background-color: rgba(255, 255, 255, 0.8); /* Fond légèrement transparent */
-    padding: 30px;
+    padding: 10px;
     border-radius: 8px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Ombre légère */
     width: 100%;
     max-width: 600px; /* Limiter la largeur à 600px */
-    margin-top: 10px;  /* Espacement entre le titre et la boîte d'inscription */
+    margin-top: 5px;  /* Espacement entre le titre et la boîte d'inscription */
 }
 
 /* Labels des champs du formulaire */
 form label {
     font-weight: bold;
-    margin-top: 5px;
+    margin-top: 3px;
     display: block;
     color: var(--color-primary); /* Couleur primaire pour les labels */
     font-family: var(--font-family-primary); /* Police par défaut pour les labels */
@@ -522,7 +523,7 @@ form button,
 form textarea {
     width: 100%;
     padding: 10px;
-    margin-top: 8px;
+    margin-top: 4px;
     border: 1px solid #ddd; /* Bordure claire */
     border-radius: 5px;
     font-size: 1em;
@@ -546,6 +547,29 @@ form button:hover {
 }
 
 /* -------------------------------
+   Styles spécifiques pour le bouton PayPal
+   ------------------------------- */
+.paypal-container {
+    margin-top: 20px; /* Espacement supérieur pour séparer de la section précédente */
+    text-align: center; /* Centrer le bouton PayPal */
+}
+
+.paypal-container label {
+    font-size: 1.1em;
+    font-weight: bold;
+    color: #333; /* Couleur du texte du label */
+    display: block;
+    margin-bottom: 10px;
+}
+
+#paypal-button-container {
+    margin-top: 20px; /* Espacement au-dessus du bouton PayPal */
+    display: flex;
+    justify-content: center; /* Centrer le bouton horizontalement */
+}
+
+
+/* -------------------------------
    Formulaire Responsive Design
    ------------------------------- */
 @media (max-width: 768px) {
@@ -558,7 +582,98 @@ form button:hover {
     }
 }
 
+/* -------------------------------
+   Section de contact
+   ------------------------------- */
+#contact {
+    display: flex;
+    justify-content: center; /* Centrer horizontalement */
+    align-items: center; /* Centrer verticalement */
+    height: 100vh;
+    text-align: center;
+    padding: 20px;
+    flex-direction: column;
+    font-family: var(--font-family-primary); /* Appliquer la police primaire */
+    color: var(--color-primary); /* Appliquer la couleur primaire */
+}
 
+#contact h1 {
+    font-size: 2.5em;
+    margin-top: -530px; /* Ajuster la marge supérieure à 5px */
+    margin-bottom: 80px; /* Ajuster la marge inférieure pour un espacement cohérent */
+    color: var(--color-highlight); /* Utiliser la couleur d'accentuation pour le titre */
+}
+
+.form-container {
+    background-color: rgba(255, 255, 255, 0.8); /* Fond légèrement transparent */
+    padding: 20px; /* Augmenter le padding pour plus d'espace intérieur */
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Ombre légère */
+    width: 100%;
+    max-width: 600px; /* Limiter la largeur à 600px */
+    margin-top: 80px;  /* Espacement entre le titre et la boîte d'inscription */
+}
+
+/* Labels des champs du formulaire */
+form label {
+    font-weight: bold;
+    margin-top: 10px; /* Augmenter l'espacement entre les labels et les champs */
+    display: block;
+    color: var(--color-primary); /* Couleur primaire pour les labels */
+    font-family: var(--font-family-primary); /* Police par défaut pour les labels */
+}
+
+/* Champs du formulaire (input) */
+form input,
+form button,
+form textarea {
+    width: 100%;
+    padding: 10px;
+    margin-top: 10px; /* Augmenter l'espacement entre les champs */
+    border: 1px solid #ddd; /* Bordure claire */
+    border-radius: 5px;
+    font-size: 1em;
+    font-family: var(--font-family-primary); /* Utiliser la police par défaut */
+}
+
+/* Empêcher le redimensionnement de la boîte de description */
+form textarea {
+    resize: none;
+}
+
+/* Bouton de soumission */
+form button {
+    background-color: var(--color-primary); /* Couleur d'accentuation pour le bouton */
+    color: white;
+    border: none;
+    cursor: pointer;
+    margin-top: 20px;
+    font-size: 1.1em;
+    transition: background-color 0.3s;
+}
+
+/* Effet au survol du bouton */
+form button:hover {
+    background-color: #e67e22; /* Change de couleur lors du survol */
+}
+
+@media (max-width: 768px) {
+    #contact h1 {
+        font-size: 2.5em; /* Réduire la taille du titre sur mobile */
+    }
+
+    .form-container {
+        padding: 10px; /* Réduire le padding sur mobile */
+    }
+
+    .form-input {
+        padding: 8px; /* Réduire le padding des champs de formulaire sur mobile */
+    }
+
+    #submit-button {
+        padding: 8px; /* Réduire le padding du bouton sur mobile */
+    }
+}
 
 /* -------------------------------
    Footer
