@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Inscription - École de Hockey Stinziani Bruneau</title>
     <link rel="stylesheet" href="CSS/style.css"> <!-- Lien vers ton fichier CSS -->
-    <style>
+        <style>
         /* Styles pour le popup modal */
         .modal {
             display: none; 
@@ -16,19 +16,17 @@
             width: 100%; 
             height: 100%; 
             overflow: auto; 
-            background-color: rgb(0,0,0); 
             background-color: rgba(0,0,0,0.4); 
             padding-top: 60px; 
-            display: flex;
-            justify-content: center;
-            align-items: center;
         }
         .modal-content {
             background-color: #fefefe;
+            border-radius: 8px;
+	    margin: 5% auto; 
             padding: 20px;
             border: 1px solid #888;
-            width: 60%; /* Réduire la taille du popup */
-            max-width: 400px; /* Limite maximale de la taille */
+            width: 55%; /* 60% de la taille du formulaire */
+            max-width: 500px; /* Limite maximale de la taille */
             text-align: center;
         }
         .close {
@@ -48,12 +46,32 @@
             display: flex;
             justify-content: center;
             align-items: center;
+            gap: 20px; /* Espace entre les éléments */
         }
         .checkbox-group div {
             margin-right: 20px;
         }
         .checkbox-group label {
             margin-right: 5px;
+        }
+        /* Styles pour les boutons */
+        #submit-without-payment {
+            background-color: #333; /* Noir */
+            color: #fff;
+            padding: 10px 20px;
+            margin-top: 10px;
+            font-size: 16px;
+            cursor: pointer;
+            width: 100%;
+        }
+        #paypal-button-container button {
+            background-color: rgb(0, 112, 186); /* Bleu PayPal */
+            color: #fff;
+            padding: 10px 20px;
+            margin-top: 10px;
+            font-size: 16px;
+            cursor: pointer;
+            width: 100%;
         }
     </style>
 </head>
@@ -79,7 +97,7 @@
         
         <div class="form-container">
             <!-- Formulaire HTML pour l'inscription -->
-            <form id="form-inscription" action="https://formspree.io/f/xpwzryyv" method="POST" onsubmit="return handleSubmit()">
+            <form id="form-inscription" action="https://formspree.io/f/xpwzryyv" method="POST">
                 
                 <label for="prenom">Prénom du joueur :</label>
                 <input type="text" id="prenom" name="prenom" class="form-input" required placeholder="Prénom du joueur">
@@ -111,26 +129,55 @@
                 <label for="service">Service demandé :</label>
                 <select id="service" name="service" class="form-input" required>
                     <option value="" disabled selected>Choisissez un service</option>
-                    <option value="camp-7-juillet">Semaine de camp 7 juillet</option>
-                    <option value="camp-4-aout">Semaine de camp 4 août</option>
-                    <option value="camp-21-aout">Semaine de camp 21 août</option>
+                    <option value="camp">Camp de hockey</option>
                     <option value="developpement">Programme de développement</option>
                     <option value="equipe-aaa-printemps">Équipe AAA Printemps</option>
                 </select>
 
+                <!-- Options pour le camp de hockey -->
+                <div id="camp-options" style="display: none;">
+                    <label for="nombre-semaines">Nombre de semaines :</label>
+                    <select id="nombre-semaines" name="nombre-semaines" class="form-input">
+                        <option value="" disabled selected>Choisissez le nombre de semaines</option>
+                        <option value="1">1 semaine</option>
+                        <option value="2">2 semaines</option>
+                        <option value="3">3 semaines</option>
+                    </select>
+
+                    <div id="semaines-selection" style="display: none;">
+                        <label for="semaines">Semaine du :</label>
+                        <div class="checkbox-group">
+                            <div>
+                                <label for="7-juillet">7 juillet</label>
+                                <input type="checkbox" id="7-juillet" name="semaines[]" value="7-juillet">
+                            </div>
+                            <div>
+                                <label for="4-aout">4 août</label>
+                                <input type="checkbox" id="4-aout" name="semaines[]" value="4-aout">
+                            </div>
+                            <div>
+                                <label for="21-aout">21 août</label>
+                                <input type="checkbox" id="21-aout" name="semaines[]" value="21-aout">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
                 <!-- Bouton de soumission -->
                 <button type="button" id="submit-button">Soumettre mon inscription</button>
+                <input type="hidden" id="payment-status" name="payment-status" value="non-payé">
+                <input type="hidden" id="amount" name="amount" value="">
             </form>
         </div>
     </section>
 
     <!-- Popup Modal -->
-    <div id="payment-popup" class="modal">
+    <div id="paymentModal" class="modal">
         <div class="modal-content">
-            <span class="close-button">×</span>
-            <h2>Choisissez votre option</h2>
-            <!-- Option de soumission sans payer -->
-            <button id="submit-without-payment">Soumettre sans payer</button>
+            <span class="close">×</span>
+            <h2>Choisissez une option</h2>
+            <button id="paypal-button-container">Payer avec PayPal</button>
+            <button id="submit-without-payment">Inscrire sans payer</button>
         </div>
     </div>
 
@@ -139,147 +186,129 @@
         <p>© 2024 Stinziani Bruneau Hockey.</p>
     </footer>
 
-            <script>
-        // Ouvrir le pop-up lorsque le bouton "Soumettre mon inscription" est cliqué
-        document.getElementById('submit-button').onclick = function() {
-            if (document.getElementById('form-inscription').checkValidity()) {
-                document.getElementById('payment-popup').style.display = 'block';
-            } else {
-                alert('Veuillez remplir tous les champs obligatoires.');
+   <script src="https://www.paypal.com/sdk/js?client-id=YOUR_CLIENT_ID"></script> <!-- Charge PayPal SDK -->
+<script>
+    // Afficher le popup modal
+    var modal = document.getElementById("paymentModal");
+    var btn = document.getElementById("submit-button");
+    var span = document.getElementsByClassName("close")[0];
+
+    btn.onclick = function() {
+        var service = document.getElementById('service').value;
+        var nombreSemaines = document.getElementById('nombre-semaines').value;
+        var amount = 0;
+
+        if (service === 'camp') {
+            if (nombreSemaines === '1') {
+                amount = 450;
+            } else if (nombreSemaines === '2') {
+                amount = 875;
+            } else if (nombreSemaines === '3') {
+                amount = 1275;
             }
-        };
-
-        // Fermer le pop-up lorsque la croix est cliquée
-        document.querySelector('.close-button').onclick = function() {
-            document.getElementById('payment-popup').style.display = 'none';
-        };
-
-        // Soumettre sans payer
-        document.getElementById('submit-without-payment').onclick = function() {
-            document.getElementById('form-inscription').submit();
-        };
-
-        // Fonction pour rafraîchir ou rediriger la page après la soumission du formulaire
-        function handleSubmit() {
-            // Soumettre le formulaire
-            document.getElementById('form-inscription').submit();
-            // Rafraîchir la page après soumission
-            setTimeout(function() {
-                // Rafraîchir la page d'inscription
-                window.location.href = "inscriptions.html";  // Vous pouvez également choisir de rediriger ailleurs
-            }, 2000); // Attendre 2 secondes avant la redirection ou le rafraîchissement
-            return false; // Empêcher l'envoi immédiat pour activer la logique de redirection
+        } else if (service === 'developpement') {
+            amount = 420;
         }
 
-        // Fonction de réinitialisation du formulaire
-        function resetForm() {
-            // Empêche la réinitialisation avant soumission du formulaire
-            if (document.getElementById('form-inscription').checkValidity()) {
-                document.getElementById('form-inscription').reset();
-            }
+        document.getElementById('amount').value = amount;
+        modal.style.display = "block";
+    }
+
+    span.onclick = function() {
+        modal.style.display = "none";
+    }
+
+    window.onclick = function(event) {
+        if (event.target == modal) {
+            modal.style.display = "none";
         }
+    }
 
-        // Afficher les options de semaines en fonction du nombre de semaines choisi
-        document.getElementById('nombre-semaines').addEventListener('change', function() {
-            var nombreSemaines = this.value;
-            var semainesSelection = document.getElementById('semaines-selection');
-            var checkboxes = semainesSelection.querySelectorAll('input[type="checkbox"]');
-            semainesSelection.style.display = 'block';
+    // Afficher les options de semaines en fonction du nombre de semaines choisi
+    document.getElementById('nombre-semaines').addEventListener('change', function() {
+        var nombreSemaines = this.value;
+        var semainesSelection = document.getElementById('semaines-selection');
+        var checkboxes = semainesSelection.querySelectorAll('input[type="checkbox"]');
+        semainesSelection.style.display = 'block';
 
-            checkboxes.forEach(function(checkbox) {
-                checkbox.checked = false;
-                checkbox.disabled = false;
-            });
-
-            if (nombreSemaines === '3') {
-                checkboxes.forEach(function(checkbox) {
-                    checkbox.checked = true;
-                    checkbox.disabled = true;
-                });
-            } else {
-                checkboxes.forEach(function(checkbox) {
-                    checkbox.addEventListener('change', function() {
-                        var checkedCount = document.querySelectorAll('#semaines-selection input[type="checkbox"]:checked').length;
-                        if (checkedCount >= nombreSemaines) {
-                            checkboxes.forEach(function(box) {
-                                if (!box.checked) {
-                                    box.disabled = true;
-                                }
-                            });
-                        } else {
-                            checkboxes.forEach(function(box) {
-                                box.disabled = false;
-                            });
-                        }
-                    });
-                });
-            }
+        checkboxes.forEach(function(checkbox) {
+            checkbox.checked = false;
+            checkbox.disabled = false;
         });
 
-        // Afficher les options de camp de hockey en fonction du service choisi
-        document.getElementById('service').addEventListener('change', function() {
-            var service = this.value;
-            var campOptions = document.getElementById('camp-options');
-            if (service === 'camp') {
-                campOptions.style.display = 'block';
-            } else {
-                campOptions.style.display = 'none';
-            }
+        if (nombreSemaines === '3') {
+            checkboxes.forEach(function(checkbox) {
+                checkbox.checked = true;
+                checkbox.disabled = true;
+            });
+        } else {
+            checkboxes.forEach(function(checkbox) {
+                checkbox.addEventListener('change', function() {
+                    var checkedCount = document.querySelectorAll('#semaines-selection input[type="checkbox"]:checked').length;
+                    if (checkedCount >= nombreSemaines) {
+                        checkboxes.forEach(function(box) {
+                            if (!box.checked) {
+                                box.disabled = true;
+                            }
+                        });
+                    } else {
+                        checkboxes.forEach(function(box) {
+                            box.disabled = false;
+                        });
+                    }
+                });
+            });
+        }
+    });
+
+    // Afficher les options de camp de hockey en fonction du service choisi
+    document.getElementById('service').addEventListener('change', function() {
+        var service = this.value;
+        var campOptions = document.getElementById('camp-options');
+        if (service === 'camp') {
+            campOptions.style.display = 'block';
+        } else {
+            campOptions.style.display = 'none';
+        }
+    });
+
+    // Option de soumission sans paiement
+        document.getElementById('submit-without-payment').addEventListener('click', function(event) {
+            document.getElementById('payment-status').value = 'non-payé';
+            document.getElementById('form-inscription').submit();
+        });
+
+        // Afficher le bouton PayPal et configurer l'option de paiement
+        document.getElementById('pay-with-paypal').addEventListener('click', function(event) {
+            document.getElementById('payment-status').value = 'payé';
+            modal.style.display = "none";
+
+            // Créer le bouton PayPal
+            paypal.Buttons({
+                createOrder: function(data, actions) {
+                    var amount = document.getElementById('amount').value;
+                    return actions.order.create({
+                        purchase_units: [{
+                            amount: {
+                                value: amount  // Utiliser le montant calculé
+                            }
+                        }]
+                    });
+                },
+                onApprove: function(data, actions) {
+                    return actions.order.capture().then(function(details) {
+                        alert('Merci, ' + details.payer.name.given_name + '! Votre paiement a été effectué avec succès.');
+                        
+                        // Soumettre le formulaire après paiement
+                        document.getElementById('form-inscription').submit();
+                    });
+                },
+                onCancel: function(data) {
+                    alert('Le paiement a été annulé');
+                }
+            }).render('#paypal-button-container');
         });
     </script>
 
-    <style>
-        /* Style du pop-up */
-        .modal {
-            display: none; 
-            position: fixed; 
-            z-index: 1; 
-            left: 0;
-            top: 0;
-            width: 100%; 
-            height: 100%; 
-            background-color: rgba(0, 0, 0, 0.4); 
-        }
-
-        .modal-content {
-            background-color: white;
-            margin: 15% auto;
-            padding: 20px;
-            border-radius: 10px;
-            width: 80%;
-            max-width: 500px;
-        }
-
-        .close-button {
-            color: #aaa;
-            font-size: 28px;
-            font-weight: bold;
-            position: absolute;
-            top: 5px;
-            right: 15px;
-        }
-
-        .close-button:hover,
-        .close-button:focus {
-            color: black;
-            text-decoration: none;
-            cursor: pointer;
-        }
-
-        button {
-            padding: 10px 20px;
-            margin-top: 10px;
-            font-size: 16px;
-            cursor: pointer;
-            width: 100%;
-        }
-
-        #submit-without-payment {
-            background-color: #f1f1f1;
-            color: #333;
-        }
-    </style>
-
 </body>
 </html>
-
