@@ -260,7 +260,7 @@ body {
 /* Titres des sections (services) */
 #services h2 {
     font-size: 1.8em;
-    margin-top: 25px;
+    margin-top: 10px;
     margin-bottom: 2px;
     color: var(--color-primary); /* Utiliser la couleur primaire */
 }
