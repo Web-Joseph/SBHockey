@@ -488,7 +488,7 @@ select.form-input {
 /* Titre de la section */
 #inscription h1 {
     font-size: 2.5em;
-    margin-top: -320px; /* Ajuste l'espacement du titre à 10px du header */
+    margin-top: -200px; /* Ajuste l'espacement du titre à 10px du header */
     margin-bottom: var(--title-description-spacing); /* Espacement entre le titre et le formulaire */
     color: var(--color-primary); /* Couleur or définie dans les variables */
     font-family: var(--font-family-secondary); /* Police secondaire pour le titre */
