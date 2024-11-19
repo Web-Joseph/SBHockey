@@ -98,12 +98,14 @@
             }
         }
 
-        .page-title {
+        ..page-title {
             font-size: 2em;
             color: #000;
             text-align: center;
             margin: 20px auto;
-            display: none; /* Par défaut, le titre est caché */
+            position: relative; /* Position relative pour z-index */
+            z-index: 5; /* Assurez-vous que le titre est devant le header */
+            margin-top: 20px; /* Assurez un espacement suffisant pour être sous le header */
         }
 
         @media screen and (max-width: 768px) {
