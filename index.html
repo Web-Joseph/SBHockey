@@ -44,4 +44,15 @@
 
     <script src="js/scripts.js"></script>
 </body>
+
+	document.addEventListener("DOMContentLoaded", function() {
+    const menuToggle = document.querySelector('.menu-toggle');
+    const menu = document.querySelector('.menu');
+
+    // Bascule l'affichage du menu au clic sur l'icône hamburger
+    menuToggle.addEventListener('click', function() {
+        menu.classList.toggle('active');
+    });
+});
+
 </html>
