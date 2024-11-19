@@ -3,75 +3,102 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Inscription - École de Hockey Stinziani Bruneau</title>
-    <link rel="stylesheet" href="CSS/style.css"> <!-- Lien vers ton fichier CSS -->
-        <style>
-        /* Styles pour le popup modal */
-        .modal {
-            display: none; 
-            position: fixed; 
-            z-index: 1; 
-            left: 0;
-            top: 0;
-            width: 100%; 
-            height: 100%; 
-            overflow: auto; 
-            background-color: rgba(0,0,0,0.4); 
-            padding-top: 60px; 
+    <title>École de Hockey Stinziani Bruneau</title>
+    <link rel="stylesheet" href="CSS/style.css">
+    <style>
+        /* Ajout des styles CSS spécifiques pour le menu déroulant mobile */
+        /* Styles de base pour le menu */
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
         }
-        .modal-content {
-            background-color: #fefefe;
-            border-radius: 8px;
-	    margin: 5% auto; 
-            padding: 20px;
-            border: 1px solid #888;
-            width: 55%; /* 60% de la taille du formulaire */
-            max-width: 500px; /* Limite maximale de la taille */
-            text-align: center;
+
+        header {
+            background-color: #333;
+            color: white;
+            padding: 10px 0;
         }
-        .close {
-            color: #aaa;
-            float: right;
-            font-size: 28px;
-            font-weight: bold;
-        }
-        .close:hover,
-        .close:focus {
-            color: black;
-            text-decoration: none;
-            cursor: pointer;
-        }
-        /* Styles pour aligner les cases à cocher sur une ligne */
-        .checkbox-group {
-            display: flex;
+
+        .menu {
+            display: flex; /* Menu horizontal par défaut */
             justify-content: center;
-            align-items: center;
-            gap: 20px; /* Espace entre les éléments */
         }
-        .checkbox-group div {
-            margin-right: 20px;
+
+        .menu ul {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+            display: flex;
         }
-        .checkbox-group label {
-            margin-right: 5px;
+
+        .menu ul li {
+            padding: 15px;
         }
-        /* Styles pour les boutons */
-        #submit-without-payment {
-            background-color: #333; /* Noir */
-            color: #fff;
-            padding: 10px 20px;
-            margin-top: 10px;
-            font-size: 16px;
+
+        .menu a {
+            color: white;
+            text-decoration: none;
+            display: block;
+            padding: 5px 10px;
+        }
+
+        .menu a:hover {
+            background-color: #555;
+        }
+
+        /* Icône de menu hamburger pour les petits écrans */
+        .menu-toggle {
+            display: none; /* Masqué par défaut */
             cursor: pointer;
-            width: 100%;
+            padding: 10px;
+            background-color: #333;
+            border: none;
         }
-        #paypal-button-container button {
-            background-color: rgb(0, 112, 186); /* Bleu PayPal */
-            color: #fff;
-            padding: 10px 20px;
-            margin-top: 10px;
-            font-size: 16px;
-            cursor: pointer;
-            width: 100%;
+
+        .menu-toggle .bar {
+            display: block;
+            width: 30px;
+            height: 4px;
+            margin: 6px auto;
+            background-color: white;
+        }
+
+        /* Cacher le menu pour les petits écrans et afficher l'icône hamburger */
+        @media screen and (max-width: 768px) {
+            .menu {
+                display: none; /* Cacher le menu par défaut */
+                width: 100%;
+            }
+
+            .menu.active {
+                display: block; /* Afficher le menu lorsque la classe 'active' est ajoutée */
+            }
+
+            .menu-toggle {
+                display: block; /* Afficher l'icône hamburger */
+            }
+
+            .menu ul {
+                display: block; /* Empiler les liens verticalement */
+                width: 100%;
+                text-align: center;
+                margin-top: 10px;
+            }
+
+            .menu ul li {
+                padding: 10px;
+            }
+
+            .menu ul li a {
+                padding: 15px;
+                background-color: #333;
+                border-top: 1px solid #444;
+            }
+
+            .menu ul li a:hover {
+                background-color: #555;
+            }
         }
     </style>
 </head>
@@ -79,6 +106,13 @@
 
     <!-- Menu de navigation -->
     <header>
+        <!-- Icône de menu mobile -->
+        <div class="menu-toggle">
+            <span class="bar"></span>
+            <span class="bar"></span>
+            <span class="bar"></span>
+        </div>
+
         <nav class="menu">
             <ul>
                 <li><a href="index.html">Accueil</a></li>
@@ -91,97 +125,60 @@
         </nav>
     </header>
 
-<!-- Conteneur principal pour permettre le défilement -->
-    <div style="overflow-y: auto; height: calc(100vh - 60px); padding-bottom: 160px;"> <!-- Ajustez la hauteur selon vos besoins -->
+    <!-- Conteneur principal -->
+    <div style="overflow-y: auto; height: calc(100vh - 60px); padding-bottom: 160px;">
 
-    <!-- Section Inscription -->
-    <section id="inscription" class="section">
-        <h1>Inscription en ligne</h1>
-        
-        <div class="form-container">
-            <!-- Formulaire HTML pour l'inscription -->
-            <form id="form-inscription" action="https://formspree.io/f/xpwzryyv" method="POST">
-                
-                <label for="prenom">Prénom du joueur :</label>
-                <input type="text" id="prenom" name="prenom" class="form-input" required placeholder="Prénom du joueur">
-                
-                <label for="nom">Nom du joueur :</label>
-                <input type="text" id="nom" name="nom" class="form-input" required placeholder="Nom du joueur">
-                
-                <label for="annee-naissance">Année de naissance :</label>
-                <input type="number" id="annee-naissance" name="annee-naissance" class="form-input" required placeholder="Année de naissance">
-                
-                <label for="niveau">Niveau joué 2024-2025 :</label>
-                <input type="text" id="niveau" name="niveau" class="form-input" required placeholder="Niveau joué">
-                
-                <label for="parent">Nom du parent responsable :</label>
-                <input type="text" id="parent" name="parent" class="form-input" required placeholder="Nom du parent responsable">
-                
-                <label for="telephone">Numéro de téléphone d'urgence :</label>
-                <input type="tel" id="telephone" name="telephone" class="form-input" required placeholder="Numéro de téléphone d'urgence">
-                
-                <label for="email">Adresse courriel :</label>
-                <input type="email" id="email" name="email" class="form-input" required placeholder="Adresse courriel">
-                
-                <label for="chandail">Grandeur de chandail de hockey :</label>
-                <input type="text" id="chandail" name="chandail" class="form-input" required placeholder="Grandeur de chandail">
-                
-                <label for="tshirt">Grandeur de t-shirt :</label>
-                <input type="text" id="tshirt" name="tshirt" class="form-input" required placeholder="Grandeur de t-shirt">
-                
-                <label for="service">Service demandé :</label>
-                <select id="service" name="service" class="form-input" required>
-                    <option value="" disabled selected>Choisissez un service</option>
-                    <option value="camp">Camp de hockey</option>
-                    <option value="developpement">Programme de développement</option>
-                    <option value="equipe-aaa-printemps">Équipe AAA Printemps</option>
-                </select>
-
-                <!-- Options pour le camp de hockey -->
-                <div id="camp-options" style="display: none;">
-                    <label for="nombre-semaines">Nombre de semaines :</label>
-                    <select id="nombre-semaines" name="nombre-semaines" class="form-input">
-                        <option value="" disabled selected>Choisissez le nombre de semaines</option>
-                        <option value="1">1 semaine</option>
-                        <option value="2">2 semaines</option>
-                        <option value="3">3 semaines</option>
+        <!-- Section Inscription -->
+        <section id="inscription" class="section">
+            <h1>Inscription en ligne</h1>
+            
+            <div class="form-container">
+                <!-- Formulaire HTML -->
+                <form id="form-inscription" action="https://formspree.io/f/xpwzryyv" method="POST">
+                    
+                    <label for="prenom">Prénom du joueur :</label>
+                    <input type="text" id="prenom" name="prenom" class="form-input" required placeholder="Prénom du joueur">
+                    
+                    <label for="nom">Nom du joueur :</label>
+                    <input type="text" id="nom" name="nom" class="form-input" required placeholder="Nom du joueur">
+                    
+                    <label for="annee-naissance">Année de naissance :</label>
+                    <input type="number" id="annee-naissance" name="annee-naissance" class="form-input" required placeholder="Année de naissance">
+                    
+                    <label for="niveau">Niveau joué 2024-2025 :</label>
+                    <input type="text" id="niveau" name="niveau" class="form-input" required placeholder="Niveau joué">
+                    
+                    <label for="parent">Nom du parent responsable :</label>
+                    <input type="text" id="parent" name="parent" class="form-input" required placeholder="Nom du parent responsable">
+                    
+                    <label for="telephone">Numéro de téléphone d'urgence :</label>
+                    <input type="tel" id="telephone" name="telephone" class="form-input" required placeholder="Numéro de téléphone d'urgence">
+                    
+                    <label for="email">Adresse courriel :</label>
+                    <input type="email" id="email" name="email" class="form-input" required placeholder="Adresse courriel">
+                    
+                    <label for="chandail">Grandeur de chandail de hockey :</label>
+                    <input type="text" id="chandail" name="chandail" class="form-input" required placeholder="Grandeur de chandail">
+                    
+                    <label for="tshirt">Grandeur de t-shirt :</label>
+                    <input type="text" id="tshirt" name="tshirt" class="form-input" required placeholder="Grandeur de t-shirt">
+                    
+                    <label for="service">Service demandé :</label>
+                    <select id="service" name="service" class="form-input" required>
+                        <option value="" disabled selected>Choisissez un service</option>
+                        <option value="camp">Camp de hockey</option>
+                        <option value="developpement">Programme de développement</option>
+                        <option value="equipe-aaa-printemps">Équipe AAA Printemps</option>
                     </select>
 
-                    <div id="semaines-selection" style="display: none;">
-                        <label for="semaines">Semaine du :</label>
-                        <div class="checkbox-group">
-                            <div>
-                                <label for="7-juillet">7 juillet</label>
-                                <input type="checkbox" id="7-juillet" name="semaines[]" value="7-juillet">
-                            </div>
-                            <div>
-                                <label for="4-aout">4 août</label>
-                                <input type="checkbox" id="4-aout" name="semaines[]" value="4-aout">
-                            </div>
-                            <div>
-                                <label for="21-aout">21 août</label>
-                                <input type="checkbox" id="21-aout" name="semaines[]" value="21-aout">
-                            </div>
-                        </div>
-                    </div>
-                </div>
+                    <!-- Bouton de soumission -->
+                    <button type="button" id="submit-button">Soumettre mon inscription</button>
+                    <input type="hidden" id="payment-status" name="payment-status" value="non-payé">
+                    <input type="hidden" id="amount" name="amount" value="">
+                </form>
+            </div>
+        </section>
 
-                <!-- Bouton de soumission -->
-                <button type="button" id="submit-button">Soumettre mon inscription</button>
-                <input type="hidden" id="payment-status" name="payment-status" value="non-payé">
-                <input type="hidden" id="amount" name="amount" value="">
-            </form>
-        </div>
-    </section>
-
-    <!-- Popup Modal -->
-    <div id="paymentModal" class="modal">
-        <div class="modal-content">
-            <span class="close">×</span>
-            <h2>Choisissez une option</h2>
-            <button id="paypal-button-container">Payer avec PayPal</button>
-            <button id="submit-without-payment">Inscrire sans payer</button>
-        </div>
     </div>
 
     <!-- Footer -->
@@ -189,7 +186,19 @@
         <p>© 2024 Stinziani Bruneau Hockey.</p>
     </footer>
 
-   <script src="https://www.paypal.com/sdk/js?client-id=YOUR_CLIENT_ID"></script> <!-- Charge PayPal SDK -->
+    <!-- JavaScript -->
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            const menuToggle = document.querySelector('.menu-toggle');
+            const menu = document.querySelector('.menu');
+
+            // Bascule l'affichage du menu au clic sur l'icône hamburger
+            menuToggle.addEventListener('click', function() {
+                menu.classList.toggle('active');
+            });
+        });
+    </script>
+<script src="https://www.paypal.com/sdk/js?client-id=YOUR_CLIENT_ID"></script> <!-- Charge PayPal SDK -->
 <script>
     // Afficher le popup modal
     var modal = document.getElementById("paymentModal");
