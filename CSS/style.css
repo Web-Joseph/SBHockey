@@ -604,7 +604,7 @@ select.form-input {
 
 @media (max-width: 768px) {
     #inscription {
-        padding-top: 120px; /* Ajuste l'espace sous le header */
+        padding-top: 10px; /* Ajuste l'espace sous le header */
     }
 
     #inscription h1 {
@@ -614,7 +614,7 @@ select.form-input {
 
 @media (max-width: 480px) {
     #inscription {
-        padding-top: 140px; /* Plus d'espace pour petits écrans */
+        padding-top: 10px; /* Plus d'espace pour petits écrans */
     }
 
     #inscription h1 {
