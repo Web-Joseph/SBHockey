@@ -820,53 +820,59 @@ form button:hover {
    ------------------------------- */
 #contact {
     display: flex;
-    justify-content: center; /* Centrer horizontalement */
-    align-items: center; /* Centrer verticalement */
-    height: 100vh;
-    text-align: center;
+    flex-direction: column;   /* Organiser les éléments en colonne */
+    justify-content: center;  /* Centrer horizontalement */
+    align-items: center;      /* Centrer verticalement */
+    height: 100vh;            /* Prend toute la hauteur de la fenêtre */
+    text-align: center;       /* Centre le texte */
     padding: 20px;
-    flex-direction: column;
     font-family: var(--font-family-primary); /* Appliquer la police primaire */
     color: var(--color-primary); /* Appliquer la couleur primaire */
+    background-color: #f9f9f9; /* Exemple de fond clair (modifiable si besoin) */
 }
 
+/* Titre de la section */
 #contact h1 {
-    font-size: 2.5em;
-    margin-top: -520px; /* Ajuster la marge supérieure à 5px */
-    margin-bottom: 80px; /* Ajuster la marge inférieure pour un espacement cohérent */
-    color: var(--color-highlight); /* Utiliser la couleur d'accentuation pour le titre */
+    font-size: 2.5em;         /* Taille par défaut */
+    margin-top: 20px;         /* Ajuster l'espace au-dessus */
+    margin-bottom: 40px;      /* Ajuster l'espace en dessous */
+    color: var(--color-highlight); /* Utiliser la couleur d'accentuation */
+    text-align: center;       /* Centre le titre */
+    position: relative;       /* Assure un bon positionnement */
+    z-index: 1;               /* Garde le titre visible */
 }
 
+/* Conteneur du formulaire */
 .form-container {
     background-color: rgba(255, 255, 255, 0.8); /* Fond légèrement transparent */
-    padding: 20px; /* Augmenter le padding pour plus d'espace intérieur */
-    border-radius: 8px;
+    padding: 20px;          /* Espace intérieur */
+    border-radius: 8px;     /* Coins arrondis */
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Ombre légère */
     width: 100%;
-    max-width: 600px; /* Limiter la largeur à 600px */
-    margin-top: 80px;  /* Espacement entre le titre et la boîte d'inscription */
+    max-width: 600px;       /* Limiter la largeur à 600px */
+    margin-top: 40px;       /* Espace au-dessus du formulaire */
 }
 
 /* Labels des champs du formulaire */
 form label {
     font-weight: bold;
-    margin-top: 10px; /* Augmenter l'espacement entre les labels et les champs */
+    margin-top: 10px;       /* Espacement entre les labels et les champs */
     display: block;
     color: var(--color-primary); /* Couleur primaire pour les labels */
     font-family: var(--font-family-primary); /* Police par défaut pour les labels */
 }
 
-/* Champs du formulaire (input) */
+/* Champs du formulaire (input, textarea, button) */
 form input,
-form button,
-form textarea {
+form textarea,
+form button {
     width: 100%;
     padding: 10px;
-    margin-top: 10px; /* Augmenter l'espacement entre les champs */
+    margin-top: 10px;       /* Espacement entre les champs */
     border: 1px solid #ddd; /* Bordure claire */
     border-radius: 5px;
     font-size: 1em;
-    font-family: var(--font-family-primary); /* Utiliser la police par défaut */
+    font-family: var(--font-family-primary); /* Police par défaut */
 }
 
 /* Empêcher le redimensionnement de la boîte de description */
@@ -890,21 +896,44 @@ form button:hover {
     background-color: #e67e22; /* Change de couleur lors du survol */
 }
 
+/* -------------------------------
+   Responsive Design
+   ------------------------------- */
 @media (max-width: 768px) {
+    #contact {
+        padding: 20px;        /* Réduire le padding global sur mobile */
+    }
+
     #contact h1 {
-        font-size: 2.5em; /* Réduire la taille du titre sur mobile */
+        font-size: 2em;       /* Réduire légèrement la taille du titre */
+        margin-top: 10px;     /* Réduire l'espace supérieur */
+        margin-bottom: 20px;  /* Réduire l'espace inférieur */
     }
 
     .form-container {
-        padding: 10px; /* Réduire le padding sur mobile */
+        padding: 10px;        /* Réduire le padding intérieur du formulaire */
     }
 
-    .form-input {
-        padding: 8px; /* Réduire le padding des champs de formulaire sur mobile */
+    form input,
+    form textarea,
+    form button {
+        padding: 8px;         /* Réduire le padding des champs et du bouton */
     }
 
-    #submit-button {
-        padding: 8px; /* Réduire le padding du bouton sur mobile */
+    form button {
+        font-size: 1em;       /* Réduire la taille de la police du bouton */
+    }
+}
+
+@media (max-width: 480px) {
+    #contact h1 {
+        font-size: 1.8em;     /* Réduction supplémentaire pour les très petits écrans */
+        margin-top: 10px;
+        margin-bottom: 20px;
+    }
+
+    .form-container {
+        padding: 10px;        /* Padding réduit */
     }
 }
 
