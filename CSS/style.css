@@ -131,7 +131,7 @@ header {
 
     header + .page-title {
         display: block; /* Affiche le titre sous le header */
-        margin-top: 10px; /* Réduit l'espace au-dessus du titre */
+        margin-top: 40px; /* Réduit l'espace au-dessus du titre */
         font-size: 1.8em; /* Taille légèrement réduite */
     }
 
