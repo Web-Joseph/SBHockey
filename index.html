@@ -4,150 +4,55 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>École de Hockey Stinziani Bruneau</title>
-    <style>
-        /* Styles de base pour le menu */
-        body {
-            font-family: Arial, sans-serif;
-            margin: 0;
-            padding: 0;
-        }
-
-        header {
-            background-color: #333;
-            color: white;
-            padding: 10px 0;
-        }
-
-        .menu {
-            display: flex; /* Menu horizontal par défaut */
-            justify-content: center;
-        }
-
-        .menu ul {
-            list-style: none;
-            margin: 0;
-            padding: 0;
-            display: flex;
-        }
-
-        .menu ul li {
-            padding: 15px;
-        }
-
-        .menu a {
-            color: white;
-            text-decoration: none;
-            display: block;
-            padding: 5px 10px;
-        }
-
-        .menu a:hover {
-            background-color: #555;
-        }
-
-        /* Icône de menu hamburger pour les petits écrans */
-        .menu-toggle {
-            display: none; /* Masqué par défaut */
-            cursor: pointer;
-            padding: 10px;
-            background-color: #333;
-            border: none;
-        }
-
-        .menu-toggle .bar {
-            display: block;
-            width: 30px;
-            height: 4px;
-            margin: 6px auto;
-            background-color: white;
-        }
-
-        /* Cacher le menu pour les petits écrans et afficher l'icône hamburger */
-        @media screen and (max-width: 768px) {
-            .menu {
-                display: none; /* Cacher le menu par défaut */
-                width: 100%;
-            }
-
-            .menu.active {
-                display: block; /* Afficher le menu lorsque la classe 'active' est ajoutée */
-            }
-
-            .menu-toggle {
-                display: block; /* Afficher l'icône hamburger */
-            }
-
-            .menu ul {
-                display: block; /* Empiler les liens verticalement */
-                width: 100%;
-                text-align: center;
-                margin-top: 10px;
-            }
-
-            .menu ul li {
-                padding: 10px;
-            }
-
-            .menu ul li a {
-                padding: 15px;
-                background-color: #333;
-                border-top: 1px solid #444;
-            }
-
-            .menu ul li a:hover {
-                background-color: #555;
-            }
-        }
-    </style>
+    <link rel="stylesheet" href="CSS/style.css">
 </head>
 <body>
-
-    <!-- Menu de navigation -->
+    <!-- Menu de navigation déroulant -->
     <header>
+	    
         <!-- Icône de menu déroulant pour mobile (hamburger) -->
         <div class="menu-toggle">
             <span class="bar"></span>
             <span class="bar"></span>
             <span class="bar"></span>
         </div>
-
-        <!-- Menu de navigation -->
+	    
         <nav class="menu">
             <ul>
                 <li><a href="index.html">Accueil</a></li>
                 <li><a href="notre-equipe.html">Notre Équipe</a></li>
                 <li><a href="services.html">Nos Services</a></li>
                 <li><a href="inscriptions.html">Inscription</a></li>
-                <li><a href="temoignages.html">Témoignages</a></li>
+		<li><a href="temoignages.html">Témoignages</a></li> <!-- Lien vers la page témoignages -->
                 <li><a href="contact.html">Contact</a></li>
             </ul>
         </nav>
+	    
     </header>
 
     <!-- Section d'accueil -->
     <section id="accueil" class="section">
         <h1>Bienvenue sur le Site Web de Stinziani Bruneau Hockey</h1>
-        <p>Stinziani-Bruneau est une école de hockey située à Blainville depuis maintenant 1 an.</p>
-        <p>Notre objectif est de partager notre passion pour le hockey avec les jeunes de la région.</p>
-        <p>Nous voulons les aider à atteindre leurs objectifs et les préparer pour leur saison.</p>
+        <p>Stinziani-Bruneau est une école de hockey situé a Blainville depuis maintenant 1 ans.</p>
+	<p>Notre objectif est de partager notre passion pour le hockey avec les jeunes de la régions. </p>
+	<p>Nous voulons les aider pour qu'ils atteignent leurs objectifs et les préparer pour leur saison.</p>
     </section>
 
     <footer>
         <p>&copy; 2024 Stinziani Bruneau Hockey.</p>
     </footer>
 
-    <script>
-        // JavaScript pour le menu hamburger
-        document.addEventListener("DOMContentLoaded", function() {
-            const menuToggle = document.querySelector('.menu-toggle');
-            const menu = document.querySelector('.menu');
-
-            // Bascule l'affichage du menu au clic sur l'icône hamburger
-            menuToggle.addEventListener('click', function() {
-                menu.classList.toggle('active');
-            });
-        });
-    </script>
-
+    <script src="js/scripts.js"></script>
 </body>
+
+	document.addEventListener("DOMContentLoaded", function() {
+    const menuToggle = document.querySelector('.menu-toggle');
+    const menu = document.querySelector('.menu');
+
+    // Bascule l'affichage du menu au clic sur l'icône hamburger
+    menuToggle.addEventListener('click', function() {
+        menu.classList.toggle('active');
+    });
+});
+
 </html>
