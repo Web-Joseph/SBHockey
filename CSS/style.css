@@ -51,9 +51,11 @@ body {
    Header et Menu
    ------------------------------- */
 header {
+    position: relative; /* Assure que le header reste au-dessus */
     background-color: #333;
     color: white;
     padding: 10px 0;
+    z-index: 10; /* Place le header au-dessus des autres éléments */
     margin-bottom: 0; /* Supprime tout espacement sous le header */
 }
 
@@ -63,6 +65,8 @@ header {
     align-items: center;
     padding: 10px 20px;
     background-color: #333;
+    z-index: 10; /* Assure que le menu est au-dessus du titre */
+    position: relative;
 }
 
 .menu ul {
@@ -92,6 +96,7 @@ header {
     flex-direction: column;
     cursor: pointer;
     margin-right: auto;
+    z-index: 15; /* Place le menu hamburger au-dessus des autres éléments */
 }
 
 .menu-toggle .bar {
@@ -110,6 +115,9 @@ header {
     text-align: center;
     margin: var(--title-top-margin) auto;
     display: none; /* Caché par défaut */
+    position: relative; /* Suit le flux normal */
+    z-index: 1; /* Place le titre sous le header */
+    padding-top: 10px; /* Ajoute un espace pour éviter qu'il ne touche le header */
 }
 
 /* -------------------------------
