@@ -3,48 +3,71 @@
    ------------------------------- */
 :root {
     /* Espacements */
-    --title-description-spacing: 10px;         /* Espacement entre le titre et la description */
-    --title-photo-spacing: 50px;               /* Espacement entre le titre et la photo de Mike */
-    --photo-description-spacing: 30px;         /* Espacement entre la photo et la description */
-    --line-spacing: 20px;                      /* Espacement entre les lignes de texte dans la description */
-    --title-top-margin: 10px;                   /* Espacement entre le titre et le haut de la page */
+    --title-description-spacing: 10px; /* Espacement entre le titre et la description */
+    --title-photo-spacing: 50px;       /* Espacement entre le titre et les photos */
+    --photo-description-spacing: 30px; /* Espacement entre les photos et la description */
+    --line-spacing: 20px;              /* Espacement entre les lignes */
+    --title-top-margin: 10px;          /* Espacement entre le titre et le haut de la page */
     
-    --photo-mike-top-left-margin: 400px;        /* Espacement spécifique pour la photo de Mike (haut + gauche) */
-    --photo-emil-bottom-right-margin: 120px;    /* Réduction de 10px pour déplacer la photo d'Emil vers le haut de 10px */ 
+    --photo-mike-top-left-margin: 400px; /* Espacement spécifique pour la photo de Mike */
+    --photo-emil-bottom-right-margin: 120px; /* Réduction pour ajuster la photo d'Emil */
     
-    --photo-spacing-left: 113px;               /* Espacement à gauche des photos */
-    --photo-spacing-right: 113px;              /* Espacement à droite des photos */
-    --photo-margin: 30px;                      /* Espacement entre la photo et la description */
-    --footer-padding: 20px;                    /* Espacement du padding du footer */
+    --photo-spacing-left: 113px;       /* Espacement à gauche des photos */
+    --photo-spacing-right: 113px;      /* Espacement à droite des photos */
+    --footer-padding: 20px;            /* Espacement du padding du footer */
     
     /* Couleurs */
-    --color-primary: #000000;                  /* Gris foncé pour le texte */
-    --color-secondary: #333;                   /* Gris plus clair pour les sous-titres ou description */
-    --color-accent: #f39c12;                   /* Accentuation avec une couleur d'or (comme pour les titres) */
-    --color-footer-text: white;                /* Couleur du texte du footer */
-    --color-footer-background: rgba(0, 0, 0, 0.8); /* Couleur de fond du footer */
+    --color-primary: #000000;          /* Noir pour les titres */
+    --color-secondary: #333;          /* Gris pour les sous-titres */
+    --color-accent: #f39c12;           /* Couleur d'accentuation (or) */
+    --color-footer-text: white;        /* Texte blanc pour le footer */
+    --color-footer-background: rgba(0, 0, 0, 0.8); /* Fond du footer */
     
     /* Polices */
-    --font-family-primary: 'Arial', sans-serif;  /* Police par défaut */
-    --font-family-secondary: 'Roboto', sans-serif; /* Autre police */
-
+    --font-family-primary: 'Arial', sans-serif;  /* Police principale */
+    --font-family-secondary: 'Roboto', sans-serif; /* Police secondaire */
+    
     /* Espacement spécifique pour les témoignages */
-    --temoignages-top-margin: -20px;  /* Ajuste la valeur ici pour le positionner plus haut ou plus bas */
+    --temoignages-top-margin: -20px; /* Ajuste le positionnement des témoignages */
 }
 
-/* Style par défaut pour le menu */
+/* -------------------------------
+   Styles Globaux
+   ------------------------------- */
+body {
+    background-image: url('../assets/images/LogoTransparent.jpg'); /* Chemin vers l'image de fond */
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: cover; /* L'image couvre tout l'écran */
+    background-attachment: fixed;
+    opacity: 0.7;           /* Transparence */
+    min-height: 100vh;      /* Hauteur minimale */
+    margin: 0;
+    padding: 0;
+    font-family: var(--font-family-primary); /* Police globale */
+}
+
+/* -------------------------------
+   Header et Menu
+   ------------------------------- */
+header {
+    background-color: #333;
+    color: white;
+    padding: 10px 0;
+    margin-bottom: 0; /* Supprime tout espacement sous le header */
+}
+
 .menu {
     display: flex;
     justify-content: flex-end;
     align-items: center;
-    background-color: #333;
     padding: 10px 20px;
+    background-color: #333;
 }
 
 .menu ul {
     list-style: none;
     display: flex;
-    flex-direction: row; /* Par défaut en ligne pour les grands écrans */
     margin: 0;
     padding: 0;
 }
@@ -59,9 +82,13 @@
     font-size: 16px;
 }
 
-/* Style pour l'icône hamburger */
+.menu ul li a:hover {
+    background-color: #555;
+}
+
+/* Icône hamburger */
 .menu-toggle {
-    display: none; /* Cachée sur les grands écrans */
+    display: none;
     flex-direction: column;
     cursor: pointer;
     margin-right: auto;
@@ -74,20 +101,52 @@
     margin: 4px 0;
 }
 
-/* Menu mobile */
-@media screen and (max-width: 768px) {
+/* -------------------------------
+   Titre de Page
+   ------------------------------- */
+.page-title {
+    font-size: 2em;
+    color: var(--color-primary);
+    text-align: center;
+    margin: var(--title-top-margin) auto;
+    display: none; /* Caché par défaut */
+}
+
+/* -------------------------------
+   Media Queries
+   ------------------------------- */
+
+/* Écrans moyens (tablettes) */
+@media (max-width: 768px) {
+    :root {
+        --photo-mike-top-left-margin: 50px; /* Ajuste les marges pour tablettes */
+        --photo-spacing-left: 20px;
+        --photo-spacing-right: 20px;
+    }
+
+    body {
+        background-size: contain;
+        font-size: 14px; /* Réduction globale de la police */
+    }
+
+    header + .page-title {
+        display: block; /* Affiche le titre sous le header */
+        margin-top: 10px; /* Réduit l'espace au-dessus du titre */
+        font-size: 1.8em; /* Taille légèrement réduite */
+    }
+
     .menu {
-        flex-direction: column;
+        flex-direction: column; /* Menu vertical */
         align-items: flex-start;
         display: none; /* Caché par défaut */
     }
 
     .menu.active {
-        display: flex; /* Afficher lorsque la classe active est ajoutée */
+        display: flex; /* Affiche le menu lorsque activé */
     }
 
     .menu ul {
-        flex-direction: column; /* Empile les éléments */
+        flex-direction: column;
         width: 100%;
     }
 
@@ -96,160 +155,25 @@
     }
 
     .menu-toggle {
-        display: flex; /* Visible uniquement sur mobile */
+        display: flex; /* Affiche le menu hamburger */
     }
 }
 
-/* -------------------------------
-   Appliquer le logo en arrière-plan à l'ensemble de la page
-   ------------------------------- */
-body {
-    background-image: url('../assets/images/LogoTransparent.jpg'); /* Chemin relatif vers le logo */
-    background-repeat: no-repeat;
-    background-position: center center;
-    background-size: cover; /* L'image couvre toute la fenêtre */
-    background-attachment: fixed;
-    opacity: 0.7;  /* Ajuster la transparence de l'image de fond */
-    min-height: 100vh; /* Hauteur minimale pour couvrir toute la fenêtre */
-    margin: 0;
-    padding: 0;
-    font-family: Arial, sans-serif;
-}
-
-/* -------------------------------
-   Variables Globales pour la police et la couleur
-   ------------------------------- */
-:root {
-    /* Polices Globales */
-    --font-family-primary: 'Arial', sans-serif;  /* Police par défaut */
-    --font-family-secondary: 'Roboto', sans-serif; /* Autre police que tu peux choisir */
-    
-    /* Couleurs Globales */
-    --color-primary: #000000;  /* Gris foncé pour le texte */
-    --color-secondary: #333; /* Gris plus clair pour les sous-titres ou description */
-    --color-accent: #f39c12; /* Accentuation avec une couleur d'or (comme pour les titres) */
-    --color-footer-text: white; /* Couleur du texte du footer */
-    --color-footer-background: rgba(0, 0, 0, 0.8); /* Couleur de fond du footer */
-    
-    /* Espacements pour la mise en page */
-    --title-description-spacing: 10px;
-    --title-photo-spacing: 50px;
-    --photo-description-spacing: 30px;
-    --line-spacing: 20px;
-}
-
-/* Style global pour le titre de page */
-.page-title {
-    font-size: 2em;
-    color: var(--color-primary); /* Utilise la couleur globale */
-    text-align: center;
-    margin: var(--title-top-margin) auto; /* Espacement global pour le titre */
-    display: none; /* Par défaut, le titre est caché */
-}
-
-/* Pour les écrans moyens (tablettes) */
-@media (max-width: 768px) {
+/* Écrans petits (mobiles) */
+@media (max-width: 480px) {
     :root {
-        --photo-mike-top-left-margin: 50px; /* Ajuster pour écrans plus petits */
-        --photo-spacing-left: 20px;
-        --photo-spacing-right: 20px;
+        --photo-mike-top-left-margin: 10px;
+        --photo-spacing-left: 10px;
+        --photo-spacing-right: 10px;
     }
 
     body {
-        background-size: contain; /* Ajuste l'image de fond pour petits écrans */
-        font-size: 14px; /* Réduit la taille globale de la police */
+        background-size: cover; /* Assure que le fond reste lisible */
+        font-size: 12px; /* Police plus petite */
     }
 
-    /* Ajoutez les styles pour déplacer le titre */
     header + .page-title {
-        display: block; /* Affiche le titre sous le header */
-        text-align: center; /* Centre le texte */
-        margin-top: 20px; /* Espacement au-dessus du titre */
-        font-size: 1.5em; /* Ajuste la taille du titre sur mobile */
-        color: var(--color-primary); /* Utilise la couleur primaire définie */
-    }
-
-    .menu {
-        justify-content: center; /* Centre le menu pour un meilleur alignement */
-    }
-}
-
-/* Pour les petits écrans (mobiles) */
-@media (max-width: 480px) {
-    :root {
-        --photo-mike-top-left-margin: 10px;
-        --photo-spacing-left: 10px;
-        --photo-spacing-right: 10px;
-    }
-
-    body {
-        background-size: cover; /* S'assure que l'image reste lisible */
-        font-size: 12px; /* Encore plus petit pour les mobiles */
-    }
-}
-
-/* -------------------------------
-   Appliquer le logo en arrière-plan à l'ensemble de la page
-   ------------------------------- */
-body {
-    background-image: url('../assets/images/LogoTransparent.jpg'); /* Chemin relatif vers le logo */
-    background-repeat: no-repeat;
-    background-position: center center;
-    background-size: cover; /* L'image couvre toute la fenêtre */
-    background-attachment: fixed;
-    opacity: 0.7;  /* Ajuster la transparence de l'image de fond */
-    min-height: 100vh; /* Hauteur minimale pour couvrir toute la fenêtre */
-    margin: 0;
-    padding: 0;
-    font-family: Arial, sans-serif;
-}
-
-/* -------------------------------
-   Variables Globales pour la police et la couleur
-   ------------------------------- */
-:root {
-    /* Polices Globales */
-    --font-family-primary: 'Arial', sans-serif;  /* Police par défaut */
-    --font-family-secondary: 'Roboto', sans-serif; /* Autre police que tu peux choisir */
-    
-    /* Couleurs Globales */
-    --color-primary: #000000;  /* Gris foncé pour le texte */
-    --color-secondary: #333; /* Gris plus clair pour les sous-titres ou description */
-    --color-accent: #f39c12; /* Accentuation avec une couleur d'or (comme pour les titres) */
-    --color-footer-text: white; /* Couleur du texte du footer */
-    --color-footer-background: rgba(0, 0, 0, 0.8); /* Couleur de fond du footer */
-    
-    /* Espacements pour la mise en page */
-    --title-description-spacing: 10px;
-    --title-photo-spacing: 50px;
-    --photo-description-spacing: 30px;
-    --line-spacing: 20px;
-}
-/* Pour les écrans moyens (tablettes) */
-@media (max-width: 768px) {
-    :root {
-        --photo-mike-top-left-margin: 50px; /* Ajuster pour écrans plus petits */
-        --photo-spacing-left: 20px;
-        --photo-spacing-right: 20px;
-    }
-
-    body {
-        background-size: contain; /* Ajuste l'image de fond pour petits écrans */
-        font-size: 14px; /* Réduit la taille globale de la police */
-    }
-}
-
-/* Pour les petits écrans (mobiles) */
-@media (max-width: 480px) {
-    :root {
-        --photo-mike-top-left-margin: 10px;
-        --photo-spacing-left: 10px;
-        --photo-spacing-right: 10px;
-    }
-
-    body {
-        background-size: cover; /* S'assure que l'image reste lisible */
-        font-size: 12px; /* Encore plus petit pour les mobiles */
+        font-size: 1.6em; /* Taille encore plus réduite */
     }
 }
 
