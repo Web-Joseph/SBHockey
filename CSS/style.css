@@ -742,39 +742,57 @@ form button:hover {
         padding: 20px; /* Moins de padding sur mobile */
     }
 
+    #inscription h1 {
+        font-size: 1.8em;       /* Réduit légèrement la taille */
+        margin-top: 30px;       /* Ajuste l'espacement au-dessus */
+        line-height: 1.4;       /* Améliore la lisibilité */
+    }
+
     .form-container {
         padding: 20px;
-        max-width: 90%; /* Réduit la largeur pour petits écrans */
+        max-width: 90%;         /* Réduit la largeur pour petits écrans */
     }
 
     form input,
     form button,
     form textarea {
-        font-size: 0.9em; /* Réduit légèrement la taille de police */
-        padding: 8px; /* Réduit le padding des champs */
+        font-size: 0.9em;       /* Réduit légèrement la taille de police */
+        padding: 8px;           /* Réduit le padding des champs */
     }
 
     form button {
-        font-size: 1em; /* Ajuste la taille du bouton */
+        font-size: 1em;         /* Ajuste la taille du bouton */
+    }
+
+    /* Masque les boutons PayPal et Soumettre sans payer */
+    #paypal-button, #submit-without-payment {
+        display: none;
     }
 }
 
 @media (max-width: 480px) {
     #inscription {
         background-size: contain; /* Ajuste l'image pour éviter qu'elle déborde */
-        background-attachment: scroll; /* Supprime l'effet "fixed" pour les performances */
+        background-attachment: scroll; /* Supprime l'effet "fixed" */
+        background-position: top center; /* Repositionne l'image */
+        padding-top: 60px; /* Ajoute de l'espace sous le header */
     }
 
     #inscription h1 {
-        font-size: 1.8em; /* Réduit la taille du titre */
-        margin-top: -100px; /* Ajuste l'espacement vertical */
+        font-size: 1.5em;       /* Réduction pour les petits écrans */
+        margin-top: 40px;       /* Ajuste l'espacement vertical */
+        word-wrap: break-word;  /* Coupe les mots longs si nécessaire */
     }
 
     .paypal-container {
         margin-top: 20px; /* Maintient l'espacement sur mobile */
     }
-}
 
+    /* Masque les boutons PayPal et Soumettre sans payer */
+    #paypal-button, #submit-without-payment {
+        display: none;
+    }
+}
 
 /* -------------------------------
    Section de contact
