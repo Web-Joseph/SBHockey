@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="fr">
 <head>
@@ -8,7 +7,6 @@
     <link rel="stylesheet" href="CSS/style.css">
     <style>
         /* Ajout des styles CSS spécifiques pour le menu déroulant mobile */
-        /* Styles de base pour le menu */
         body {
             font-family: Arial, sans-serif;
             margin: 0;
@@ -48,7 +46,6 @@
             background-color: #555;
         }
 
-        /* Icône de menu hamburger pour les petits écrans */
         .menu-toggle {
             display: none; /* Masqué par défaut */
             cursor: pointer;
@@ -65,7 +62,6 @@
             background-color: white;
         }
 
-        /* Cacher le menu pour les petits écrans et afficher l'icône hamburger */
         @media screen and (max-width: 768px) {
             .menu {
                 display: none; /* Cacher le menu par défaut */
@@ -101,6 +97,20 @@
                 background-color: #555;
             }
         }
+
+        .page-title {
+            font-size: 2em;
+            color: #000;
+            text-align: center;
+            margin: 20px auto;
+            display: none; /* Par défaut, le titre est caché */
+        }
+
+        @media screen and (max-width: 768px) {
+            .page-title {
+                display: block; /* Affiche le titre sous le header sur les petits écrans */
+            }
+        }
     </style>
 </head>
 <body>
@@ -125,6 +135,9 @@
             </ul>
         </nav>
     </header>
+
+    <!-- Titre principal de la page -->
+    <h1 class="page-title">École de Hockey Stinziani Bruneau</h1>
 
     <!-- Conteneur principal pour permettre le défilement -->
     <div style="min-height: calc(100vh - 60px); padding-bottom: 160px;"> <!-- Ajustez la hauteur selon vos besoins -->
@@ -223,6 +236,8 @@
     <footer>
         <p>© 2024 Stinziani Bruneau Hockey.</p>
     </footer>
+</body>
+</html>
 
     <!-- JavaScript -->
     <script>
