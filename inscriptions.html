@@ -234,6 +234,35 @@
         <p>© 2024 Stinziani Bruneau Hockey.</p>
     </footer>
 
+<!-- Script pour le menu hamburger -->
+<script>
+    // Sélectionner les éléments HTML nécessaires
+    const menuToggle = document.querySelector('.menu-toggle');
+    const menu = document.querySelector('.menu');
+
+    // Ajouter un gestionnaire d'événement au clic sur le menu-toggle
+    menuToggle.addEventListener('click', () => {
+        menu.classList.toggle('active'); // Ajoute ou supprime la classe 'active'
+    });
+</script>
+
+<script>
+        // Afficher la modal si le formulaire est valide
+        submitButton.addEventListener("click", function () {
+            if (validateForm()) {
+                paymentModal.style.display = "block";
+            } else {
+                alert("Veuillez remplir tous les champs obligatoires.");
+            }
+        });
+
+        // Fermer la modal au clic sur le bouton de fermeture
+        closeModal.addEventListener("click", function () {
+            paymentModal.style.display = "none";
+        });
+    });
+</script>
+
     <!-- JavaScript -->
     <script>
     document.addEventListener("DOMContentLoaded", function () {
