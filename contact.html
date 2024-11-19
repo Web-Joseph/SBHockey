@@ -6,7 +6,9 @@
     <title>École de Hockey Stinziani Bruneau</title>
     <link rel="stylesheet" href="CSS/style.css">
     <style>
-        /* Ajout des styles CSS spécifiques pour le menu déroulant mobile */
+        /* -------------------------------
+           Styles généraux
+           ------------------------------- */
         body {
             font-family: Arial, sans-serif;
             margin: 0;
@@ -17,6 +19,9 @@
             background-color: #333;
             color: white;
             padding: 10px 0;
+            position: sticky;
+            top: 0;
+            z-index: 10; /* S'assurer que le header reste au-dessus */
         }
 
         .menu {
@@ -98,17 +103,92 @@
             }
         }
 
-        .page-title {
-            font-size: 2em;
-            color: #000;
+        /* -------------------------------
+           Section de contact
+           ------------------------------- */
+        #contact {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
             text-align: center;
-            margin: 20px auto;
-            display: none; /* Par défaut, le titre est caché */
+            padding: 20px;
+            font-family: Arial, sans-serif;
+            color: #333; /* Couleur du texte par défaut */
+        }
+
+        #contact h1 {
+            font-size: 2.5em;
+            margin: 20px 0; /* Espacement cohérent au-dessus et en dessous */
+            color: #000; /* Couleur du titre */
+        }
+
+        .form-container {
+            background-color: rgba(255, 255, 255, 0.8); /* Fond légèrement transparent */
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Ombre légère */
+            width: 100%;
+            max-width: 600px; /* Limiter la largeur */
+        }
+
+        /* Labels des champs du formulaire */
+        form label {
+            font-weight: bold;
+            margin-top: 10px;
+            display: block;
+            color: #333; /* Couleur des labels */
+        }
+
+        /* Champs du formulaire (input, textarea, button) */
+        form input,
+        form textarea,
+        form button {
+            width: 100%;
+            padding: 10px;
+            margin-top: 10px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-size: 1em;
+        }
+
+        form textarea {
+            resize: none; /* Empêcher le redimensionnement */
+        }
+
+        /* Bouton de soumission */
+        form button {
+            background-color: #333; /* Couleur sombre pour le bouton */
+            color: white;
+            border: none;
+            cursor: pointer;
+            margin-top: 20px;
+            font-size: 1.1em;
+            transition: background-color 0.3s;
+        }
+
+        form button:hover {
+            background-color: #555; /* Couleur au survol */
         }
 
         @media screen and (max-width: 768px) {
-            .page-title {
-                display: block; /* Affiche le titre sous le header sur les petits écrans */
+            #contact h1 {
+                font-size: 2em;
+            }
+
+            .form-container {
+                padding: 10px;
+            }
+
+            form input,
+            form textarea,
+            form button {
+                padding: 8px;
+            }
+
+            form button {
+                font-size: 1em;
             }
         }
     </style>
@@ -136,38 +216,35 @@
         </nav>
     </header>
 
-    <!-- Conteneur principal pour permettre le défilement -->
-    <div style="min-height: calc(100vh - 60px); padding-bottom: 160px;"> <!-- Ajustez la hauteur selon vos besoins -->
-    <!-- Section Contactez l'Équipe de Coach -->
+    <!-- Section de contact -->
     <section id="contact" class="section">
         <h1>Contactez l'Équipe de Coach</h1>
-        
+
         <!-- Conteneur pour le formulaire -->
         <div class="form-container">
-            <!-- Formulaire HTML pour contacter l'équipe de coach -->
             <form id="form-inscription" action="https://formspree.io/f/xpwzryyv" method="POST">
                 <label for="nom">Nom de la personne à contacter :</label>
-                <input type="text" id="nom" name="nom" class="form-input" required placeholder="Nom de la personne à contacter">
-                
+                <input type="text" id="nom" name="nom" required placeholder="Nom de la personne à contacter">
+
                 <label for="telephone">Numéro de téléphone :</label>
-                <input type="tel" id="telephone" name="telephone" class="form-input" required placeholder="Numéro de téléphone">
-                
+                <input type="tel" id="telephone" name="telephone" required placeholder="Numéro de téléphone">
+
                 <label for="email">Courriel :</label>
-                <input type="email" id="email" name="email" class="form-input" required placeholder="Courriel">
-                
+                <input type="email" id="email" name="email" required placeholder="Courriel">
+
                 <label for="sujet">Sujet :</label>
-                <input type="text" id="sujet" name="sujet" class="form-input" required placeholder="Sujet">
-                
+                <input type="text" id="sujet" name="sujet" required placeholder="Sujet">
+
                 <label for="description">Description :</label>
-                <textarea id="description" name="description" class="form-input" required placeholder="Décrivez vos besoins" maxlength="1000"></textarea>
-                
+                <textarea id="description" name="description" required placeholder="Décrivez vos besoins" maxlength="1000"></textarea>
+
                 <!-- Bouton de soumission -->
-                <button type="submit" id="submit-button">Soumettre</button>
+                <button type="submit">Soumettre</button>
             </form>
         </div>
     </section>
 
-    <!-- Footer identique au premier fichier -->
+    <!-- Footer -->
     <footer>
         <p>© 2024 Stinziani Bruneau Hockey.</p>
     </footer>
