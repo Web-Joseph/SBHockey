@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="fr">
 <head>
@@ -225,16 +226,49 @@
 
     <!-- JavaScript -->
     <script>
-        document.addEventListener("DOMContentLoaded", function() {
-            const menuToggle = document.querySelector('.menu-toggle');
-            const menu = document.querySelector('.menu');
+    document.addEventListener("DOMContentLoaded", function () {
+        const form = document.getElementById("form-inscription");
+        const submitButton = document.getElementById("submit-button");
+        const paymentModal = document.getElementById("paymentModal");
+        const closeModal = document.querySelector(".modal .close");
 
-            // Bascule l'affichage du menu au clic sur l'icône hamburger
-            menuToggle.addEventListener('click', function() {
-                menu.classList.toggle('active');
-            });
+        // Fonction pour vérifier que tous les champs obligatoires sont remplis
+        function validateForm() {
+            const inputs = form.querySelectorAll("input, select, textarea");
+            for (const input of inputs) {
+                if (input.hasAttribute("required") && !input.value.trim()) {
+                    return false; // Retourne faux si un champ obligatoire est vide
+                }
+            }
+            return true;
+        }
+
+        // Afficher la modale ou alerter l'utilisateur
+        submitButton.addEventListener("click", function (e) {
+            e.preventDefault(); // Empêche l'envoi automatique du formulaire
+
+            if (validateForm()) {
+                paymentModal.style.display = "block"; // Affiche la modale si tout est valide
+            } else {
+                alert("Veuillez remplir tous les champs obligatoires avant de soumettre."); // Alerte si des champs sont vides
+                paymentModal.style.display = "none"; // S'assure que la modale reste cachée
+            }
         });
-    </script>
+
+        // Ferme la modale lorsqu'on clique sur "x"
+        closeModal.addEventListener("click", function () {
+            paymentModal.style.display = "none";
+        });
+
+        // Permet de fermer la modale en cliquant en dehors de son contenu
+        window.addEventListener("click", function (event) {
+            if (event.target === paymentModal) {
+                paymentModal.style.display = "none";
+            }
+        });
+    });
+</script>
+
 <script src="https://www.paypal.com/sdk/js?client-id=YOUR_CLIENT_ID"></script> <!-- Charge PayPal SDK -->
 <script>
     // Afficher le popup modal
