@@ -1,4 +1,3 @@
-
 /* -------------------------------
    Variables Globales - Espacements, Polices et Couleurs
    ------------------------------- */
@@ -101,6 +100,93 @@
     }
 }
 
+/* -------------------------------
+   Appliquer le logo en arrière-plan à l'ensemble de la page
+   ------------------------------- */
+body {
+    background-image: url('../assets/images/LogoTransparent.jpg'); /* Chemin relatif vers le logo */
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: cover; /* L'image couvre toute la fenêtre */
+    background-attachment: fixed;
+    opacity: 0.7;  /* Ajuster la transparence de l'image de fond */
+    min-height: 100vh; /* Hauteur minimale pour couvrir toute la fenêtre */
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+}
+
+/* -------------------------------
+   Variables Globales pour la police et la couleur
+   ------------------------------- */
+:root {
+    /* Polices Globales */
+    --font-family-primary: 'Arial', sans-serif;  /* Police par défaut */
+    --font-family-secondary: 'Roboto', sans-serif; /* Autre police que tu peux choisir */
+    
+    /* Couleurs Globales */
+    --color-primary: #000000;  /* Gris foncé pour le texte */
+    --color-secondary: #333; /* Gris plus clair pour les sous-titres ou description */
+    --color-accent: #f39c12; /* Accentuation avec une couleur d'or (comme pour les titres) */
+    --color-footer-text: white; /* Couleur du texte du footer */
+    --color-footer-background: rgba(0, 0, 0, 0.8); /* Couleur de fond du footer */
+    
+    /* Espacements pour la mise en page */
+    --title-description-spacing: 10px;
+    --title-photo-spacing: 50px;
+    --photo-description-spacing: 30px;
+    --line-spacing: 20px;
+}
+
+/* Style global pour le titre de page */
+.page-title {
+    font-size: 2em;
+    color: var(--color-primary); /* Utilise la couleur globale */
+    text-align: center;
+    margin: var(--title-top-margin) auto; /* Espacement global pour le titre */
+    display: none; /* Par défaut, le titre est caché */
+}
+
+/* Pour les écrans moyens (tablettes) */
+@media (max-width: 768px) {
+    :root {
+        --photo-mike-top-left-margin: 50px; /* Ajuster pour écrans plus petits */
+        --photo-spacing-left: 20px;
+        --photo-spacing-right: 20px;
+    }
+
+    body {
+        background-size: contain; /* Ajuste l'image de fond pour petits écrans */
+        font-size: 14px; /* Réduit la taille globale de la police */
+    }
+
+    /* Ajoutez les styles pour déplacer le titre */
+    header + .page-title {
+        display: block; /* Affiche le titre sous le header */
+        text-align: center; /* Centre le texte */
+        margin-top: 20px; /* Espacement au-dessus du titre */
+        font-size: 1.5em; /* Ajuste la taille du titre sur mobile */
+        color: var(--color-primary); /* Utilise la couleur primaire définie */
+    }
+
+    .menu {
+        justify-content: center; /* Centre le menu pour un meilleur alignement */
+    }
+}
+
+/* Pour les petits écrans (mobiles) */
+@media (max-width: 480px) {
+    :root {
+        --photo-mike-top-left-margin: 10px;
+        --photo-spacing-left: 10px;
+        --photo-spacing-right: 10px;
+    }
+
+    body {
+        background-size: cover; /* S'assure que l'image reste lisible */
+        font-size: 12px; /* Encore plus petit pour les mobiles */
+    }
+}
 
 /* -------------------------------
    Appliquer le logo en arrière-plan à l'ensemble de la page
