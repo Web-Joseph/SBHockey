@@ -1,0 +1,436 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>École de Hockey Stinziani Bruneau</title>
+    <link rel="stylesheet" href="CSS/style.css">
+    <style>
+        /* Ajout des styles CSS spécifiques pour le menu déroulant mobile */
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+
+        header {
+            background-color: #333;
+            color: white;
+            padding: 10px 0;
+        }
+
+        .menu {
+            display: flex; /* Menu horizontal par défaut */
+            justify-content: center;
+        }
+
+        .menu ul {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+            display: flex;
+        }
+
+        .menu ul li {
+            padding: 15px;
+        }
+
+        .menu a {
+            color: white;
+            text-decoration: none;
+            display: block;
+            padding: 5px 10px;
+        }
+
+        .menu a:hover {
+            background-color: #555;
+        }
+
+        .menu-toggle {
+            display: none; /* Masqué par défaut */
+            cursor: pointer;
+            padding: 10px;
+            background-color: #333;
+            border: none;
+        }
+
+        .menu-toggle .bar {
+            display: block;
+            width: 30px;
+            height: 4px;
+            margin: 6px auto;
+            background-color: white;
+        }
+
+        @media screen and (max-width: 768px) {
+            .menu {
+                display: none; /* Cacher le menu par défaut */
+                width: 100%;
+            }
+
+            .menu.active {
+                display: block; /* Afficher le menu lorsque la classe 'active' est ajoutée */
+            }
+
+            .menu-toggle {
+                display: block; /* Afficher l'icône hamburger */
+            }
+
+            .menu ul {
+                display: block; /* Empiler les liens verticalement */
+                width: 100%;
+                text-align: center;
+                margin-top: 10px;
+            }
+
+            .menu ul li {
+                padding: 10px;
+            }
+
+            .menu ul li a {
+                padding: 15px;
+                background-color: #333;
+                border-top: 1px solid #444;
+            }
+
+            .menu ul li a:hover {
+                background-color: #555;
+            }
+        }
+
+        .page-title {
+            font-size: 2em;
+            color: #000;
+            text-align: center;
+            margin: 20px auto;
+            display: none; /* Par défaut, le titre est caché */
+        }
+
+        @media screen and (max-width: 768px) {
+            .page-title {
+                display: block; /* Affiche le titre sous le header sur les petits écrans */
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Menu de navigation -->
+    <header>
+        <!-- Icône de menu mobile -->
+        <div class="menu-toggle">
+            <span class="bar"></span>
+            <span class="bar"></span>
+            <span class="bar"></span>
+        </div>
+
+        <nav class="menu">
+            <ul>
+                <li><a href="index.html">Accueil</a></li>
+                <li><a href="notre-equipe.html">Notre Équipe</a></li>
+                <li><a href="services.html">Nos Services</a></li>
+                <li><a href="inscriptions.html">Inscription</a></li>
+                <li><a href="temoignages.html">Témoignages</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Conteneur principal pour permettre le défilement -->
+    <div style="min-height: calc(100vh - 60px); padding-bottom: 160px;"> <!-- Ajustez la hauteur selon vos besoins -->
+
+    <!-- Section Inscription -->
+    <section id="inscription" class="section">
+        <h1>Inscription en ligne</h1>
+
+        <div class="form-container">
+            <!-- Formulaire HTML pour l'inscription -->
+            <form id="form-inscription" action="https://formspree.io/f/xpwzryyv" method="POST">
+                
+                <label for="prenom">Prénom du joueur :</label>
+                <input type="text" id="prenom" name="prenom" class="form-input" required placeholder="Prénom du joueur">
+                
+                <label for="nom">Nom du joueur :</label>
+                <input type="text" id="nom" name="nom" class="form-input" required placeholder="Nom du joueur">
+                
+                <label for="annee-naissance">Année de naissance :</label>
+                <input type="number" id="annee-naissance" name="annee-naissance" class="form-input" required placeholder="Année de naissance">
+                
+                <label for="niveau">Niveau joué 2024-2025 :</label>
+                <input type="text" id="niveau" name="niveau" class="form-input" required placeholder="Niveau joué">
+                
+                <label for="parent">Nom du parent responsable :</label>
+                <input type="text" id="parent" name="parent" class="form-input" required placeholder="Nom du parent responsable">
+                
+                <label for="telephone">Numéro de téléphone d'urgence :</label>
+                <input type="tel" id="telephone" name="telephone" class="form-input" required placeholder="Numéro de téléphone d'urgence">
+                
+                <label for="email">Adresse courriel :</label>
+                <input type="email" id="email" name="email" class="form-input" required placeholder="Adresse courriel">
+                
+                <label for="chandail">Grandeur de chandail de hockey :</label>
+                <input type="text" id="chandail" name="chandail" class="form-input" required placeholder="Grandeur de chandail">
+                
+                <label for="tshirt">Grandeur de t-shirt :</label>
+                <input type="text" id="tshirt" name="tshirt" class="form-input" required placeholder="Grandeur de t-shirt">
+                
+                <label for="service">Service demandé :</label>
+                <select id="service" name="service" class="form-input" required>
+                    <option value="" disabled selected>Choisissez un service</option>
+                    <option value="camp">Camp de hockey</option>
+                    <option value="developpement">Programme de développement</option>
+                    <option value="equipe-aaa-printemps">Équipe AAA Printemps</option>
+                </select>
+
+                <!-- Options pour le camp de hockey -->
+                <div id="camp-options" style="display: none;">
+                    <label for="nombre-semaines">Nombre de semaines :</label>
+                    <select id="nombre-semaines" name="nombre-semaines" class="form-input">
+                        <option value="" disabled selected>Choisissez le nombre de semaines</option>
+                        <option value="1">1 semaine</option>
+                        <option value="2">2 semaines</option>
+                        <option value="3">3 semaines</option>
+                    </select>
+
+                    <div id="semaines-selection" style="display: none;">
+                        <label for="semaines">Semaine du :</label>
+                        <div class="checkbox-group">
+                            <div>
+                                <label for="7-juillet">7 juillet</label>
+                                <input type="checkbox" id="7-juillet" name="semaines[]" value="7-juillet">
+                            </div>
+                            <div>
+                                <label for="4-aout">4 août</label>
+                                <input type="checkbox" id="4-aout" name="semaines[]" value="4-aout">
+                            </div>
+                            <div>
+                                <label for="21-aout">21 août</label>
+                                <input type="checkbox" id="21-aout" name="semaines[]" value="21-aout">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Bouton de soumission -->
+                <button type="button" id="submit-button">Soumettre mon inscription</button>
+                <input type="hidden" id="payment-status" name="payment-status" value="non-payé">
+                <input type="hidden" id="amount" name="amount" value="">
+            </form>
+        </div>
+    </section>
+
+   <!-- Popup Modal pour les options de paiement -->
+<div id="paymentModal" class="modal">
+    <div class="modal-content">
+        <span class="close">&times;</span>
+        <h2>Choisissez une option</h2>
+        <button id="paypal-button">Payer avec PayPal</button>
+        <button id="submit-without-payment">Soumettre sans payer</button>
+    </div>
+</div>
+        
+    <!-- Footer -->
+    <footer>
+        <p>© 2024 Stinziani Bruneau Hockey.</p>
+    </footer>
+
+<!-- Script pour le menu hamburger -->
+<script>
+    // Sélectionner les éléments HTML nécessaires
+    const menuToggle = document.querySelector('.menu-toggle');
+    const menu = document.querySelector('.menu');
+
+    // Ajouter un gestionnaire d'événement au clic sur le menu-toggle
+    menuToggle.addEventListener('click', () => {
+        menu.classList.toggle('active'); // Ajoute ou supprime la classe 'active'
+    });
+</script>
+
+<script>
+        // Afficher la modal si le formulaire est valide
+        submitButton.addEventListener("click", function () {
+            if (validateForm()) {
+                paymentModal.style.display = "block";
+            } else {
+                alert("Veuillez remplir tous les champs obligatoires.");
+            }
+        });
+
+        // Fermer la modal au clic sur le bouton de fermeture
+        closeModal.addEventListener("click", function () {
+            paymentModal.style.display = "none";
+        });
+    });
+</script>
+
+    <!-- JavaScript -->
+    <script>
+    document.addEventListener("DOMContentLoaded", function () {
+        const form = document.getElementById("form-inscription");
+        const submitButton = document.getElementById("submit-button");
+        const paymentModal = document.getElementById("paymentModal");
+        const closeModal = document.querySelector(".modal .close");
+
+        // Fonction pour vérifier que tous les champs obligatoires sont remplis
+        function validateForm() {
+            const inputs = form.querySelectorAll("input, select, textarea");
+            for (const input of inputs) {
+                if (input.hasAttribute("required") && !input.value.trim()) {
+                    return false; // Retourne faux si un champ obligatoire est vide
+                }
+            }
+            return true;
+        }
+
+        // Afficher la modale ou alerter l'utilisateur
+        submitButton.addEventListener("click", function (e) {
+            e.preventDefault(); // Empêche l'envoi automatique du formulaire
+
+            if (validateForm()) {
+                paymentModal.style.display = "block"; // Affiche la modale si tout est valide
+            } else {
+                alert("Veuillez remplir tous les champs obligatoires avant de soumettre."); // Alerte si des champs sont vides
+                paymentModal.style.display = "none"; // S'assure que la modale reste cachée
+            }
+        });
+
+        // Ferme la modale lorsqu'on clique sur "x"
+        closeModal.addEventListener("click", function () {
+            paymentModal.style.display = "none";
+        });
+
+        // Permet de fermer la modale en cliquant en dehors de son contenu
+        window.addEventListener("click", function (event) {
+            if (event.target === paymentModal) {
+                paymentModal.style.display = "none";
+            }
+        });
+    });
+</script>
+
+<script src="https://www.paypal.com/sdk/js?client-id=YOUR_CLIENT_ID"></script> <!-- Charge PayPal SDK -->
+<script>
+    // Afficher le popup modal
+    var modal = document.getElementById("paymentModal");
+    var btn = document.getElementById("submit-button");
+    var span = document.getElementsByClassName("close")[0];
+
+    btn.onclick = function() {
+        var service = document.getElementById('service').value;
+        var nombreSemaines = document.getElementById('nombre-semaines').value;
+        var amount = 0;
+
+        if (service === 'camp') {
+            if (nombreSemaines === '1') {
+                amount = 450;
+            } else if (nombreSemaines === '2') {
+                amount = 875;
+            } else if (nombreSemaines === '3') {
+                amount = 1275;
+            }
+        } else if (service === 'developpement') {
+            amount = 420;
+        }
+
+        document.getElementById('amount').value = amount;
+        modal.style.display = "block";
+    }
+
+    span.onclick = function() {
+        modal.style.display = "none";
+    }
+
+    window.onclick = function(event) {
+        if (event.target == modal) {
+            modal.style.display = "none";
+        }
+    }
+
+    // Afficher les options de semaines en fonction du nombre de semaines choisi
+    document.getElementById('nombre-semaines').addEventListener('change', function() {
+        var nombreSemaines = this.value;
+        var semainesSelection = document.getElementById('semaines-selection');
+        var checkboxes = semainesSelection.querySelectorAll('input[type="checkbox"]');
+        semainesSelection.style.display = 'block';
+
+        checkboxes.forEach(function(checkbox) {
+            checkbox.checked = false;
+            checkbox.disabled = false;
+        });
+
+        if (nombreSemaines === '3') {
+            checkboxes.forEach(function(checkbox) {
+                checkbox.checked = true;
+                checkbox.disabled = true;
+            });
+        } else {
+            checkboxes.forEach(function(checkbox) {
+                checkbox.addEventListener('change', function() {
+                    var checkedCount = document.querySelectorAll('#semaines-selection input[type="checkbox"]:checked').length;
+                    if (checkedCount >= nombreSemaines) {
+                        checkboxes.forEach(function(box) {
+                            if (!box.checked) {
+                                box.disabled = true;
+                            }
+                        });
+                    } else {
+                        checkboxes.forEach(function(box) {
+                            box.disabled = false;
+                        });
+                    }
+                });
+            });
+        }
+    });
+
+    // Afficher les options de camp de hockey en fonction du service choisi
+    document.getElementById('service').addEventListener('change', function() {
+        var service = this.value;
+        var campOptions = document.getElementById('camp-options');
+        if (service === 'camp') {
+            campOptions.style.display = 'block';
+        } else {
+            campOptions.style.display = 'none';
+        }
+    });
+
+    // Option de soumission sans paiement
+        document.getElementById('submit-without-payment').addEventListener('click', function(event) {
+            document.getElementById('payment-status').value = 'non-payé';
+            document.getElementById('form-inscription').submit();
+        });
+
+        // Afficher le bouton PayPal et configurer l'option de paiement
+        document.getElementById('pay-with-paypal').addEventListener('click', function(event) {
+            document.getElementById('payment-status').value = 'payé';
+            modal.style.display = "none";
+
+            // Créer le bouton PayPal
+            paypal.Buttons({
+                createOrder: function(data, actions) {
+                    var amount = document.getElementById('amount').value;
+                    return actions.order.create({
+                        purchase_units: [{
+                            amount: {
+                                value: amount  // Utiliser le montant calculé
+                            }
+                        }]
+                    });
+                },
+                onApprove: function(data, actions) {
+                    return actions.order.capture().then(function(details) {
+                        alert('Merci, ' + details.payer.name.given_name + '! Votre paiement a été effectué avec succès.');
+                        
+                        // Soumettre le formulaire après paiement
+                        document.getElementById('form-inscription').submit();
+                    });
+                },
+                onCancel: function(data) {
+                    alert('Le paiement a été annulé');
+                }
+            }).render('#paypal-button-container');
+        });
+    </script>
+
+</body>
+</html>
