@@ -833,8 +833,8 @@ form button:hover {
 /* Titre de la section */
 #contact h1 {
     font-size: 2.5em;         /* Taille par défaut */
-    margin-top: 10px;         /* Ajuster l'espace au-dessus */
-    margin-bottom: 40px;      /* Ajuster l'espace en dessous */
+    margin-top: -520px;         /* Ajuster l'espace au-dessus */
+    margin-bottom: 80px;      /* Ajuster l'espace en dessous */
     color: var(--color-highlight); /* Utiliser la couleur d'accentuation */
     text-align: center;       /* Centre le titre */
     position: relative;       /* Assure un bon positionnement */
