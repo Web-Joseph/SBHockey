@@ -33,6 +33,75 @@
     --temoignages-top-margin: -20px;  /* Ajuste la valeur ici pour le positionner plus haut ou plus bas */
 }
 
+/* Style par défaut pour le menu */
+.menu {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    background-color: #333;
+    padding: 10px 20px;
+}
+
+.menu ul {
+    list-style: none;
+    display: flex;
+    flex-direction: row; /* Par défaut en ligne pour les grands écrans */
+    margin: 0;
+    padding: 0;
+}
+
+.menu ul li {
+    margin: 0 15px;
+}
+
+.menu ul li a {
+    text-decoration: none;
+    color: white;
+    font-size: 16px;
+}
+
+/* Style pour l'icône hamburger */
+.menu-toggle {
+    display: none; /* Cachée sur les grands écrans */
+    flex-direction: column;
+    cursor: pointer;
+    margin-right: auto;
+}
+
+.menu-toggle .bar {
+    width: 25px;
+    height: 3px;
+    background-color: white;
+    margin: 4px 0;
+}
+
+/* Menu mobile */
+@media screen and (max-width: 768px) {
+    .menu {
+        flex-direction: column;
+        align-items: flex-start;
+        display: none; /* Caché par défaut */
+    }
+
+    .menu.active {
+        display: flex; /* Afficher lorsque la classe active est ajoutée */
+    }
+
+    .menu ul {
+        flex-direction: column; /* Empile les éléments */
+        width: 100%;
+    }
+
+    .menu ul li {
+        margin: 10px 0;
+    }
+
+    .menu-toggle {
+        display: flex; /* Visible uniquement sur mobile */
+    }
+}
+
+
 /* -------------------------------
    Appliquer le logo en arrière-plan à l'ensemble de la page
    ------------------------------- */
