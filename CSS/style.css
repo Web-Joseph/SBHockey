@@ -70,6 +70,33 @@ body {
     --photo-description-spacing: 30px;
     --line-spacing: 20px;
 }
+/* Pour les écrans moyens (tablettes) */
+@media (max-width: 768px) {
+    :root {
+        --photo-mike-top-left-margin: 50px; /* Ajuster pour écrans plus petits */
+        --photo-spacing-left: 20px;
+        --photo-spacing-right: 20px;
+    }
+
+    body {
+        background-size: contain; /* Ajuste l'image de fond pour petits écrans */
+        font-size: 14px; /* Réduit la taille globale de la police */
+    }
+}
+
+/* Pour les petits écrans (mobiles) */
+@media (max-width: 480px) {
+    :root {
+        --photo-mike-top-left-margin: 10px;
+        --photo-spacing-left: 10px;
+        --photo-spacing-right: 10px;
+    }
+
+    body {
+        background-size: cover; /* S'assure que l'image reste lisible */
+        font-size: 12px; /* Encore plus petit pour les mobiles */
+    }
+}
 
 /* -------------------------------
    Section Notre Équipe - Ajustement du titre et description
