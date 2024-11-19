@@ -690,6 +690,11 @@ form button:hover {
     form button {
         font-size: 1em;         /* Ajuste la taille du bouton */
     }
+
+    /* Masque les boutons PayPal et Soumettre sans payer */
+    #paypal-button, #submit-without-payment {
+        display: none;
+    }
 }
 
 @media (max-width: 480px) {
@@ -708,6 +713,11 @@ form button:hover {
 
     .paypal-container {
         margin-top: 20px; /* Maintient l'espacement sur mobile */
+    }
+
+    /* Masque les boutons PayPal et Soumettre sans payer */
+    #paypal-button, #submit-without-payment {
+        display: none;
     }
 }
 
