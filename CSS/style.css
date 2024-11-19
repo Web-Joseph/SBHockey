@@ -765,7 +765,7 @@ form button:hover {
 
     #inscription h1 {
         font-size: 1.8em;       /* Réduit légèrement la taille */
-        margin-top: 30px;       /* Ajuste l'espacement au-dessus */
+        margin-top: 10px;       /* Ajuste l'espacement au-dessus */
         line-height: 1.4;       /* Améliore la lisibilité */
     }
 
@@ -801,7 +801,7 @@ form button:hover {
 
     #inscription h1 {
         font-size: 1.5em;       /* Réduction pour les petits écrans */
-        margin-top: 40px;       /* Ajuste l'espacement vertical */
+        margin-top: 10px;       /* Ajuste l'espacement vertical */
         word-wrap: break-word;  /* Coupe les mots longs si nécessaire */
     }
 
