@@ -796,7 +796,7 @@ form button:hover {
         background-size: contain; /* Ajuste l'image pour éviter qu'elle déborde */
         background-attachment: scroll; /* Supprime l'effet "fixed" */
         background-position: top center; /* Repositionne l'image */
-        padding-top: 60px; /* Ajoute de l'espace sous le header */
+        padding-top: 10px; /* Ajoute de l'espace sous le header */
     }
 
     #inscription h1 {
