@@ -51,11 +51,9 @@ body {
    Header et Menu
    ------------------------------- */
 header {
-    position: relative; /* Assure que le header reste au-dessus */
     background-color: #333;
     color: white;
     padding: 10px 0;
-    z-index: 10; /* Place le header au-dessus des autres éléments */
     margin-bottom: 0; /* Supprime tout espacement sous le header */
 }
 
@@ -65,8 +63,6 @@ header {
     align-items: center;
     padding: 10px 20px;
     background-color: #333;
-    z-index: 10; /* Assure que le menu est au-dessus du titre */
-    position: relative;
 }
 
 .menu ul {
@@ -96,7 +92,6 @@ header {
     flex-direction: column;
     cursor: pointer;
     margin-right: auto;
-    z-index: 15; /* Place le menu hamburger au-dessus des autres éléments */
 }
 
 .menu-toggle .bar {
@@ -115,9 +110,6 @@ header {
     text-align: center;
     margin: var(--title-top-margin) auto;
     display: none; /* Caché par défaut */
-    position: relative; /* Suit le flux normal */
-    z-index: 1; /* Place le titre sous le header */
-    padding-top: 10px; /* Ajoute un espace pour éviter qu'il ne touche le header */
 }
 
 /* -------------------------------
@@ -595,23 +587,23 @@ select.form-input {
     background-position: center center;
     background-size: cover;   /* Fond qui couvre la fenêtre */
     background-attachment: fixed;
-    opacity: 1;               /* Rendre le fond légèrement transparent */
+    opacity: 1;             /* Rendre le fond légèrement transparent */
     color: var(--color-primary); /* Utiliser la couleur primaire pour le texte */
     text-align: center;       /* Centrer le texte */
 }
 
 /* Titre de la section */
 #inscription h1 {
-    font-size: 2em;           /* Taille par défaut adaptée */
-    margin-top: 20px;         /* Ajuste l'espacement du titre */
-    text-align: center;       /* Centre le titre */
-    color: var(--color-primary);
-    font-family: var(--font-family-secondary); /* Police secondaire */
-    z-index: 5;               /* S'assurer que le titre est au-dessus */
-    position: relative;       /* Position relative pour gérer les superpositions */
+    font-size: 2.5em;
+    margin-top: -200px; /* Ajuste l'espacement du titre à 10px du header */
+    margin-bottom: var(--title-description-spacing); /* Espacement entre le titre et le formulaire */
+    color: var(--color-primary); /* Couleur primaire définie dans les variables */
+    font-family: var(--font-family-secondary); /* Police secondaire pour le titre */
 }
 
-/* Conteneur du formulaire */
+/* -------------------------------
+   Conteneur du formulaire d'inscription
+   ------------------------------- */
 .form-container {
     background-color: rgba(255, 255, 255, 0.8); /* Fond légèrement transparent */
     padding: 20px;
@@ -632,7 +624,7 @@ form label {
     font-family: var(--font-family-primary); /* Police par défaut pour les labels */
 }
 
-/* Champs du formulaire */
+/* Champs du formulaire (input, textarea) */
 form input,
 form button,
 form textarea {
@@ -662,6 +654,87 @@ form button:hover {
 }
 
 /* -------------------------------
+   Styles spécifiques pour le bouton PayPal
+   ------------------------------- */
+#paypal-button-container {
+    margin-top: 20px; /* Espacement au-dessus du bouton PayPal */
+    display: flex;
+    justify-content: center; /* Centrer le bouton horizontalement */
+}
+
+/* -------------------------------
+   Styles pour la modale de paiement
+   ------------------------------- */
+.modal {
+    display: none; /* Cachée par défaut */
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0, 0, 0, 0.4); /* Fond transparent foncé */
+    padding-top: 100px;
+}
+
+.modal-content {
+    background-color: #fff;
+    margin: auto;
+    padding: 20px;
+    border-radius: 10px;
+    width: 80%;
+    max-width: 400px;
+    text-align: center;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.modal-content h2 {
+    font-size: 1.5em;
+    margin-bottom: 20px;
+}
+
+.modal-content button {
+    width: 100%;
+    padding: 10px;
+    margin: 10px 0;
+    border: none;
+    border-radius: 5px;
+    font-size: 1em;
+    cursor: pointer;
+}
+
+.modal-content button#paypal-button {
+    background-color: #0070ba; /* Couleur PayPal */
+    color: white;
+}
+
+.modal-content button#paypal-button:hover {
+    background-color: #005f99;
+}
+
+.modal-content button#submit-without-payment {
+    background-color: #333; /* Couleur sombre */
+    color: white;
+}
+
+.modal-content button#submit-without-payment:hover {
+    background-color: #555;
+}
+
+.modal .close {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.modal .close:hover {
+    color: black;
+}
+
+/* -------------------------------
    Formulaire Responsive Design
    ------------------------------- */
 @media (max-width: 768px) {
@@ -669,57 +742,39 @@ form button:hover {
         padding: 20px; /* Moins de padding sur mobile */
     }
 
-    #inscription h1 {
-        font-size: 1.8em;       /* Réduit légèrement la taille */
-        margin-top: 30px;       /* Ajuste l'espacement au-dessus */
-        line-height: 1.4;       /* Améliore la lisibilité */
-    }
-
     .form-container {
         padding: 20px;
-        max-width: 90%;         /* Réduit la largeur pour petits écrans */
+        max-width: 90%; /* Réduit la largeur pour petits écrans */
     }
 
     form input,
     form button,
     form textarea {
-        font-size: 0.9em;       /* Réduit légèrement la taille de police */
-        padding: 8px;           /* Réduit le padding des champs */
+        font-size: 0.9em; /* Réduit légèrement la taille de police */
+        padding: 8px; /* Réduit le padding des champs */
     }
 
     form button {
-        font-size: 1em;         /* Ajuste la taille du bouton */
-    }
-
-    /* Masque les boutons PayPal et Soumettre sans payer */
-    #paypal-button, #submit-without-payment {
-        display: none;
+        font-size: 1em; /* Ajuste la taille du bouton */
     }
 }
 
 @media (max-width: 480px) {
     #inscription {
         background-size: contain; /* Ajuste l'image pour éviter qu'elle déborde */
-        background-attachment: scroll; /* Supprime l'effet "fixed" */
-        background-position: top center; /* Repositionne l'image */
-        padding-top: 60px; /* Ajoute de l'espace sous le header */
+        background-attachment: scroll; /* Supprime l'effet "fixed" pour les performances */
     }
 
     #inscription h1 {
-        font-size: 1.5em;       /* Réduction pour les petits écrans */
-        margin-top: 40px;       /* Ajuste l'espacement vertical */
-        word-wrap: break-word;  /* Coupe les mots longs si nécessaire */
+        font-size: 1.8em; /* Réduit la taille du titre */
+        margin-top: -100px; /* Ajuste l'espacement vertical */
     }
 
     .paypal-container {
         margin-top: 20px; /* Maintient l'espacement sur mobile */
     }
-
-    /* Masque les boutons PayPal et Soumettre sans payer */
-    #paypal-button, #submit-without-payment {
-        display: none;
-    }
 }
+
 
 /* -------------------------------
    Section de contact
