@@ -767,7 +767,6 @@ form button:hover {
 
     #inscription h1 {
         font-size: 1.8em; /* Réduit la taille du titre */
-        margin-top: -100px; /* Ajuste l'espacement vertical */
     }
 
     .paypal-container {
