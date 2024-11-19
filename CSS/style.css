@@ -828,7 +828,6 @@ form button:hover {
     padding: 20px;
     font-family: var(--font-family-primary); /* Appliquer la police primaire */
     color: var(--color-primary); /* Appliquer la couleur primaire */
-    background-color: #f9f9f9; /* Exemple de fond clair (modifiable si besoin) */
 }
 
 /* Titre de la section */
