@@ -587,7 +587,7 @@ select.form-input {
     font-size: 2.5em;
     margin-top: -200px; /* Ajuste l'espacement du titre à 10px du header */
     margin-bottom: var(--title-description-spacing); /* Espacement entre le titre et le formulaire */
-    color: var(--color-primary); /* Couleur or définie dans les variables */
+    color: var(--color-primary); /* Couleur primaire définie dans les variables */
     font-family: var(--font-family-secondary); /* Police secondaire pour le titre */
 }
 
@@ -596,12 +596,13 @@ select.form-input {
    ------------------------------- */
 .form-container {
     background-color: rgba(255, 255, 255, 0.8); /* Fond légèrement transparent */
-    padding: 10px;
+    padding: 20px;
     border-radius: 8px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Ombre légère */
     width: 100%;
     max-width: 600px; /* Limiter la largeur à 600px */
     margin-top: 50px;  /* Espacement entre le titre et la boîte d'inscription */
+    margin: 0 auto; /* Centrer horizontalement */
 }
 
 /* Labels des champs du formulaire */
@@ -613,7 +614,7 @@ form label {
     font-family: var(--font-family-primary); /* Police par défaut pour les labels */
 }
 
-/* Champs du formulaire (input) */
+/* Champs du formulaire (input, textarea) */
 form input,
 form button,
 form textarea {
@@ -628,7 +629,7 @@ form textarea {
 
 /* Bouton de soumission */
 form button {
-    background-color: var(--color-primary); /* Couleur d'accentuation pour le bouton */
+    background-color: var(--color-primary); /* Couleur primaire pour le bouton */
     color: white;
     border: none;
     cursor: pointer;
@@ -646,7 +647,7 @@ form button:hover {
    Styles spécifiques pour le bouton PayPal
    ------------------------------- */
 .paypal-container {
-    margin-top: 20px; /* Espacement supérieur pour séparer de la section précédente */
+    margin-top: 30px; /* Espacement supérieur pour séparer de la section précédente */
     text-align: center; /* Centrer le bouton PayPal */
 }
 
@@ -664,7 +665,6 @@ form button:hover {
     justify-content: center; /* Centrer le bouton horizontalement */
 }
 
-
 /* -------------------------------
    Formulaire Responsive Design
    ------------------------------- */
@@ -675,8 +675,37 @@ form button:hover {
 
     .form-container {
         padding: 20px;
+        max-width: 90%; /* Réduit la largeur pour petits écrans */
+    }
+
+    form input,
+    form button,
+    form textarea {
+        font-size: 0.9em; /* Réduit légèrement la taille de police */
+        padding: 8px; /* Réduit le padding des champs */
+    }
+
+    form button {
+        font-size: 1em; /* Ajuste la taille du bouton */
     }
 }
+
+@media (max-width: 480px) {
+    #inscription {
+        background-size: contain; /* Ajuste l'image pour éviter qu'elle déborde */
+        background-attachment: scroll; /* Supprime l'effet "fixed" pour les performances */
+    }
+
+    #inscription h1 {
+        font-size: 1.8em; /* Réduit la taille du titre */
+        margin-top: -100px; /* Ajuste l'espacement vertical */
+    }
+
+    .paypal-container {
+        margin-top: 20px; /* Maintient l'espacement sur mobile */
+    }
+}
+
 
 /* -------------------------------
    Section de contact
